@@ -19,9 +19,10 @@ const register = async (req,res) => {
     })
 
     const token = jwt.sign({
-        userId : user._id.toString()
-    }, config.jwtSecret);
-    
+        userId : user._id
+    }, config.jwtSecret,
+    {expiresIn : config.expiresIn});
+
     return res.status(200).json({
         success : true,
         message : "User Registered",
@@ -29,4 +30,29 @@ const register = async (req,res) => {
     })
 }
 
-export default { register }
+
+const login = async (req,res) => {
+    const payload = req.body;
+    if(!payload.email || !payload.password){
+        return sendError(res,400,"Both Email and Password are required");
+    }
+
+    
+    const user =await UserModel.findOne({email : payload.email});
+    if(!user){
+        return sendError(res,404,"User Not Found");
+    }
+    const result  =await bcrypt.compare(payload.password,user.password);
+    if(result){
+        return sendError(res,400,"Invalid Credentials");
+    }
+    
+    const token = jwt.sign({userId : user._id},config.jwtSecret,{expiresIn : config.expiresIn});
+
+    return res.status(200).json({
+        success : true,
+        message : "Logged In",
+        token
+    })
+}
+export default { register , login }
