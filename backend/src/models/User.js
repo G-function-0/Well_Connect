@@ -25,7 +25,11 @@ const userSchema = new mongoose.Schema(
             enum : ["admin","trainer","client"],
             required : true,
             default : "client"
-        }
+        },
+        
+    },
+    {
+         timestamps: true,
     }
 )
 
