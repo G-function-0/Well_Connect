@@ -1,5 +1,3 @@
-import { Link } from 'react-router-dom';
-
 const Home = () => {
     return (
         <div className="min-h-screen flex flex-col bg-slate-50 font-sans">
