@@ -7,11 +7,8 @@ const generateRefreshToken = () => {
 }
 
 
-const validateRefereshToken = (refreshToken) => {
-     
-}
 
-const revokeRefreshToken = () => {
-
+const revokeRefreshToken = async (refreshToken) => {
+    await RefreshModel.deleteOne({refreshToken});
 }
 export {generateRefreshToken, validateRefereshToken , revokeRefreshToken}

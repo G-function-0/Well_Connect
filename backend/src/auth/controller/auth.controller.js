@@ -1,7 +1,7 @@
 import { config } from "../../config/index.js";
 import { RefreshModel } from "../../models/Refresh.js";
 import { UserModel } from "../../models/User.js";
-import { generateRefreshToken } from "../../refresh/refresh.services.js";
+import { generateRefreshToken, revokeRefreshToken } from "../../refresh/refresh.services.js";
 import { sendError } from "../../utils/sendError.js";
 import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken"
@@ -70,12 +70,27 @@ const login = async (req,res) => {
     await RefreshModel.create({
         refreshToken,
         userId : user._id
-    })
+    }) // fix expiration
     return res.status(200).json({
         success : true,
         message : "Logged In",
         token,
         refreshToken
+    })
+}
+
+
+const logout = async (req,res ) => {
+    const { refreshToken } =  req.body;
+    if(!refreshToken) {
+        return sendError(res,403,"You are not Logged In");
+    }
+
+    await revokeRefreshToken(refreshToken);
+
+    return res.status(200).json({
+        success : true,
+        message : "Logged Out"
     })
 }
 
