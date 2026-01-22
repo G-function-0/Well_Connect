@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaUserCircle, FaSearch } from "react-icons/fa";
+import { Link } from 'react-router';
 
 const Header = () => {
     return (
@@ -7,7 +8,9 @@ const Header = () => {
         <header className="h-16 px-8 flex items-center justify-between bg-[#0f172a] border-b border-white/10 sticky top-0 z-50">
             {/* Left: Logo - Set to white for dark mode visibility */}
             <div className="text-xl font-bold text-white tracking-tight">
-                Fitness<span className="text-cyan-400">Guide</span>
+                <Link to="/">
+                    Fitness<span className="text-cyan-400">Guide</span>
+                </Link>
             </div>
 
             {/* Center: Search - Darkened input to match the theme */}
@@ -23,15 +26,15 @@ const Header = () => {
 
             {/* Right: Navigation - Cleaned up with matching colors */}
             <nav className="flex items-center gap-7">
-                <a href="/" className="no-underline text-slate-300 font-medium hover:text-cyan-400 transition-colors">
+                <Link to="/courses" className="no-underline text-slate-300 font-medium hover:text-cyan-400 transition-colors">
                     Courses
-                </a>
-                <a href="/" className="no-underline text-slate-300 font-medium hover:text-cyan-400 transition-colors">
+                </Link>
+                <Link to="/dashboard" className="no-underline text-slate-300 font-medium hover:text-cyan-400 transition-colors">
                     Dashboard
-                </a>
-                <a href="/" className="no-underline text-slate-300 font-medium hover:text-cyan-400 transition-colors">
+                </Link>
+                <Link to="/nutrition" className="no-underline text-slate-300 font-medium hover:text-cyan-400 transition-colors">
                     Nutrition
-                </a>
+                </Link>
 
                 {/* Profile Section */}
                 <div className="flex items-center gap-1.5 cursor-pointer text-slate-300 hover:text-white transition-colors">

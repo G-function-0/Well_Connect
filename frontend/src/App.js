@@ -18,14 +18,24 @@ import RegisterPage from './pages/Registerpage.jsx';
 
 
 
+
 function App() {
-    return (
+    return (<>
+        <Header />
+
         <Routes>
             <Route path="/" element={<Home/>} />
             <Route path="/courses" element={<CoursesPage/>} />
             <Route path="/register" element={<RegisterPage/>}/>
             <Route path="/login" element={<LoginPage/>} />
+            <Route path="/dashboard" element={<DashboardPage/>} />
+            <Route path="/nutrition" element={<NutritionPage/>} />
+            
         </Routes>
+
+        <Footer />
+    </>
+
     );
 }
 

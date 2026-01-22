@@ -1,11 +1,9 @@
 import { Link } from "react-router";
-import Footer from "../components/layout/Footer";
-import Header from "../components/layout/Header";
 
 const Home = () => {
     return (
         <div className="min-h-screen flex flex-col bg-slate-50 font-sans">
-            <Header />
+            
 
             {/* Hero Section */}
             <section className="relative overflow-hidden bg-slate-900 text-white pt-20 pb-32">
@@ -151,7 +149,6 @@ const Home = () => {
                     </div>
                 </div>
             </section>
-            <Footer />
             {/* 
             {/* Footer */}
             {/* <footer className="bg-slate-900 text-white py-12">

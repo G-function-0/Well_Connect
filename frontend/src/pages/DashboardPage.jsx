@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 // --- Reusable Modern Components ---
 
@@ -47,7 +48,7 @@ export default function DashboardPage() {
                         <h1 style={styles.greeting}>Welcome back, <span style={styles.gradientText}>Sarfaraz Shaikh!</span></h1>
                         <p style={styles.subtitle}>You've completed 80% of your weekly goal. Keep it up!</p>
                     </div>
-                    <button style={styles.primaryBtn}>+ Explore Courses</button>
+                    <Link to="/courses" style={styles.primaryBtn}>+ Explore Courses</Link>
                 </header>
 
                 {/* Stats Grid */}
