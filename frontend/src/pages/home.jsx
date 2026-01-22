@@ -1,6 +1,9 @@
+import { Link } from "react-router";
+
 const Home = () => {
     return (
         <div className="min-h-screen flex flex-col bg-slate-50 font-sans">
+            
 
             {/* Hero Section */}
             <section className="relative overflow-hidden bg-slate-900 text-white pt-20 pb-32">
@@ -13,7 +16,7 @@ const Home = () => {
                             <circle cx="12" cy="12" r="10" />
                             <polygon points="10 8 16 12 10 16 10 8" />
                         </svg>
-                        <span>Over 500+ New Classes Added This Month</span>
+                        <span>Over 50+ New Classes Added This Month</span>
                     </div>
 
                     <h1 className="text-5xl md:text-7xl font-black leading-[1.1] mb-8 tracking-tight">
@@ -27,12 +30,12 @@ const Home = () => {
                     </p>
 
                     <div className="flex flex-col sm:flex-row justify-center items-center gap-5">
-                        <button className="bg-emerald-500 hover:bg-emerald-600 text-white border-none px-10 py-6 text-lg rounded-2xl transition-all shadow-lg shadow-emerald-500/25">
+                        <Link to="/courses" className="bg-emerald-500 hover:bg-emerald-600 text-white border-none px-10 py-6 text-lg rounded-2xl transition-all shadow-lg shadow-emerald-500/25">
                             Start Training Now
-                        </button>
-                        <button className="border-2 border-slate-700 text-white hover:bg-slate-800 px-10 py-6 text-lg rounded-2xl">
+                        </Link>
+                        <Link to="/register" className="border-2 border-slate-700 text-white hover:bg-slate-800 px-10 py-6 text-lg rounded-2xl">
                             Join for Free
-                        </button>
+                        </Link>
                     </div>
                 </div>
             </section>
@@ -95,12 +98,12 @@ const Home = () => {
                                 Achieve your goals with our most popular courses led by industry experts.
                             </p>
                         </div>
-                        <button className="hidden md:block text-emerald-600 font-bold flex items-center gap-2 hover:bg-emerald-50 px-4 py-2 rounded-lg">
+                        <Link to="/courses" className="hidden md:block text-emerald-600 font-bold flex items-center gap-2 hover:bg-emerald-50 px-4 py-2 rounded-lg">
                             View All Programs
                             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                             </svg>
-                        </button>
+                        </Link>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -138,9 +141,9 @@ const Home = () => {
                                 </p>
                             </div>
                             <div className="shrink-0">
-                                <button className="bg-white text-slate-900 hover:bg-slate-100 px-12 py-7 text-xl font-bold rounded-2xl shadow-2xl">
+                                <Link to="/register" className="bg-white text-slate-900 hover:bg-slate-100 px-12 py-7 text-xl font-bold rounded-2xl shadow-2xl">
                                     Get Started Now
-                                </button>
+                                </Link>
                             </div>
                         </div>
                     </div>
