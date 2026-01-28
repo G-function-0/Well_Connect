@@ -3,7 +3,7 @@ import { Link } from "react-router";
 const Home = () => {
     return (
         <div className="min-h-screen flex flex-col bg-slate-50 font-sans">
-            
+
 
             {/* Hero Section */}
             <section className="relative overflow-hidden bg-slate-900 text-white pt-20 pb-32">
@@ -107,7 +107,7 @@ const Home = () => {
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {[1, 2, 3, 4, 5, 6].map((item) => (
+                        {[1, 2, 3].map((item) => (
                             <div key={item} className="bg-white rounded-3xl shadow-sm hover:-translate-y-2 transition-transform duration-300 overflow-hidden border border-slate-200">
                                 <div className="h-48 bg-gradient-to-br from-emerald-400 to-cyan-500"></div>
                                 <div className="p-6">

@@ -1,5 +1,5 @@
 import './App.css';
-import {Routes , Route} from 'react-router';
+import { Routes, Route } from 'react-router';
 import Header from './components/layout/Header.jsx';
 import Home from './pages/Home.jsx';
 import Footer from './components/layout/Footer.jsx';
@@ -24,13 +24,20 @@ function App() {
         <Header />
 
         <Routes>
-            <Route path="/" element={<Home/>} />
-            <Route path="/courses" element={<CoursesPage/>} />
-            <Route path="/register" element={<RegisterPage/>}/>
-            <Route path="/login" element={<LoginPage/>} />
-            <Route path="/dashboard" element={<DashboardPage/>} />
-            <Route path="/nutrition" element={<NutritionPage/>} />
-            
+            <Route path="/" element={<Home />} />
+            <Route path="/courses" element={<CoursesPage />} />
+            <Route path="/register" element={<RegisterPage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/dashboard" element={<DashboardPage />} />
+            <Route path="/nutrition" element={<NutritionPage />} />
+            <Route path="/CourseDetail" element={<CourseDetailPage />} />
+            <Route path="/Profile" element={<ProfilePage />} />
+            <Route path="my-courses" element={<MyCoursesPage />} />
+            <Route path="live-classes" element={<LiveClassPage />} />
+            <Route path="TrainerDashboard" element={<TrainerDashboardpage />} />
+            <Route path="TrainerProfile" element={<TrainerProfilePage />} />
+            <Route path="course-player" element={<CoursePlayerPage />} />
+
         </Routes>
 
         <Footer />
