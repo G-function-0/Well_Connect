@@ -25,24 +25,33 @@ const AddProgramPage = () => {
                     </div>
 
                     {/* 2. BASIC INFO SECTION */}
+                    {/* 2. BASIC INFO SECTION */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div className="flex flex-col gap-2">
                             <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 ml-2">Program Title</label>
                             <input
                                 type="text"
                                 placeholder="e.g. Hypertrophy Mastery 4.0"
-                                className="bg-white/5 border border-white/10 rounded-2xl py-4 px-6 text-white focus:outline-none focus:border-cyan-500/50 focus:ring-4 focus:ring-cyan-500/5 transition-all"
+                                className="bg-white/5 border border-white/10 rounded-2xl py-4 px-6 text-white focus:outline-none focus:border-cyan-500/50 focus:ring-4 focus:ring-cyan-500/5 transition-all placeholder:text-slate-600"
                             />
                         </div>
 
                         <div className="flex flex-col gap-2">
                             <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 ml-2">Category</label>
-                            <select className="bg-white/5 border border-white/10 rounded-2xl py-4 px-6 text-white focus:outline-none focus:border-cyan-500/50 appearance-none cursor-pointer">
-                                <option value="gym">Gym / Strength</option>
-                                <option value="yoga">Yoga / Mobility</option>
-                                <option value="zumba">Zumba / Dance</option>
-                                <option value="stretching">Stretching / Recovery</option>
-                            </select>
+                            <div className="relative">
+                                <select className="w-full bg-[#1e293b] border border-white/10 rounded-2xl py-4 px-6 text-white focus:outline-none focus:border-cyan-500/50 appearance-none cursor-pointer hover:bg-[#2d3a4f] transition-colors shadow-xl">
+                                    <option className="bg-[#1e293b] text-white" value="gym">Gym / Strength</option>
+                                    <option className="bg-[#1e293b] text-white" value="yoga">Yoga / Mobility</option>
+                                    <option className="bg-[#1e293b] text-white" value="zumba">Zumba / Dance</option>
+                                    <option className="bg-[#1e293b] text-white" value="stretching">Stretching / Recovery</option>
+                                </select>
+                                {/* Custom Arrow to replace the default browser arrow */}
+                                <div className="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none text-cyan-500">
+                                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M19 9l-7 7-7-7" />
+                                    </svg>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -85,8 +94,8 @@ const AddProgramPage = () => {
                         </div>
                     </div>
                 </form>
-            </div>
-        </div>
+            </div >
+        </div >
     );
 };
 

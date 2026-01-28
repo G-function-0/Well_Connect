@@ -15,6 +15,7 @@ import TrainerDashboardpage from './pages/TrainerDashboardpage.jsx';
 import TrainerProfilePage from './pages/TrainerProfilePage.jsx';
 import CoursesPage from './pages/Coursespages.jsx';
 import RegisterPage from './pages/Registerpage.jsx';
+import AddProgramPage from './pages/AddProgramPage.jsx';
 
 
 
@@ -37,6 +38,7 @@ function App() {
             <Route path="TrainerDashboard" element={<TrainerDashboardpage />} />
             <Route path="TrainerProfile" element={<TrainerProfilePage />} />
             <Route path="course-player" element={<CoursePlayerPage />} />
+            <Route path="add-program" element={<AddProgramPage />} />
 
         </Routes>
 
