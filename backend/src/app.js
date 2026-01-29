@@ -2,6 +2,7 @@ import express from "express"
 import { config } from "./config/index.js";
 import { connectDB } from "./db/db.js";
 import authRouter from "./routes/auth.routes.js";
+import { trainerRouter } from "./routes/trainer.routes.js";
 
 await connectDB();
 
@@ -11,8 +12,9 @@ const app = express();
 app.use(express.json());
 
 app.use("/auth",authRouter);
-
-
+app.use("/trainer",trainerRouter)
+// app.use("/client",clientRouter)
+app.use("/programs")
 
 
 app.listen(PORT,()=>{

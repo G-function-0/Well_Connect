@@ -5,6 +5,7 @@ const programSchema = new mongoose.Schema({
     title : {
         type : String,
         required : true,
+        unique : true
     },
     description : { 
         type : String,
@@ -12,8 +13,8 @@ const programSchema = new mongoose.Schema({
     },
     category : {
         type:  String,
-        enum : ["yoga","gym","zumba","streching"],
-        default : "streching"
+        enum : ["yoga","gym","zumba","streching","other","calisthenics"],
+        default : "other"
     },
     level : {
         type: String,
@@ -41,13 +42,15 @@ const programSchema = new mongoose.Schema({
     },
     trainerId : {
         type : mongoose.Schema.Types.ObjectId,
-        ref : "User"
+        ref : "User",
+        required : true
     },
-    
 },
     {   
         timestamps : true,
     });
+programSchema.index({ trainerId : 1 });
+programSchema.index({ title : "text" });
 
 const ProgramModel =  mongoose.model("Program",programSchema);
 
