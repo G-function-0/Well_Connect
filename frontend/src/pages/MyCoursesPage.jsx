@@ -1,11 +1,20 @@
-import React from 'react';
+import { useNavigate } from "react-router-dom";
+
+
+
 
 export default function MyCoursesPage() {
+    const navigate = useNavigate();
+
     const courses = [
         { title: 'Complete Fitness Masterclass', duration: '120', progress: 75, thumbnail: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&q=80', active: true },
         { title: 'Nutrition Fundamentals', duration: '90', progress: 40, thumbnail: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&q=80', active: true },
         { title: 'Yoga for Beginners', duration: '60', progress: 100, thumbnail: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80', active: false }
     ];
+
+    const navigateToCoursePlayerPage = () => {
+        navigate("/course-player");
+    };
 
     return (
         <div style={styles.pageContainer}>
@@ -65,7 +74,7 @@ export default function MyCoursesPage() {
 
                     <div style={styles.courseGrid}>
                         {courses.map((course, index) => (
-                            <div key={index} style={styles.courseCard}>
+                            <div key={index} style={styles.courseCard} onClick={navigateToCoursePlayerPage}>
                                 <div style={styles.imageWrapper}>
                                     <img src={course.thumbnail} alt={course.title} style={styles.courseImage} />
                                     {course.progress === 100 && (

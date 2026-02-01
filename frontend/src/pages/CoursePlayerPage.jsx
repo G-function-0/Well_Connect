@@ -1,4 +1,12 @@
+import { Link } from "react-router";
+
 export default function CoursePlayerPage() {
+
+    const meetUrl = "https://meet.google.com/aiu-tihx-iow";
+    const handleJoinLive = () => {
+        window.open(meetUrl, "_blank", "noopener,noreferrer");
+    };
+
     return (
         <div style={{
             minHeight: '100vh',
@@ -36,7 +44,10 @@ export default function CoursePlayerPage() {
                             <svg style={{ width: '1rem', height: '1rem' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
                             </svg>
-                            Back to Courses
+                            <Link to="/my-courses" style={{ textDecoration: 'none', color: 'inherit' }}>
+                                Back to Courses
+                            </Link>
+
                         </button>
                         <h2 style={{
                             fontWeight: 700,
@@ -166,7 +177,7 @@ export default function CoursePlayerPage() {
                                 justifyContent: 'center',
                                 color: '#ffffff'
                             }}>
-                                <div style={{ textAlign: 'center' }}>
+                                <div style={{ textAlign: 'center' }} onClick={handleJoinLive}>
                                     <svg style={{
                                         width: '4rem',
                                         height: '4rem',
@@ -176,7 +187,7 @@ export default function CoursePlayerPage() {
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path>
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                     </svg>
-                                    <p style={{ fontSize: '1.25rem' }}>Video Player</p>
+                                    <p style={{ fontSize: '1.25rem' }}>Join Live</p>
                                 </div>
                             </div>
                         </div>

@@ -1,6 +1,19 @@
+import { Route, redirect } from "react-router";
+import { useNavigate } from "react-router-dom";
+
+
+
+
 const CoursesPage = () => {
     const categories = ['All', 'Yoga', 'Calisthenics', 'Weight Training', 'HIIT', 'Cardio', 'Pilates', 'CrossFit'];
     const levels = ['All', 'Beginner', 'Intermediate', 'Advanced'];
+
+    const navigate = useNavigate();
+
+    const handleCourseClick = () => {
+        navigate("/CourseDetail");
+        console.log("Course clicked");
+    };
 
     return (
         <div className="min-h-screen bg-[#f8fafc] text-slate-900 font-sans">
@@ -92,9 +105,9 @@ const CoursesPage = () => {
 
                     {/* 4. COURSE GRID */}
                     <div className="flex-1">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8" >
                             {[1, 2, 3, 4].map((item) => (
-                                <div key={item} className="group cursor-pointer bg-white rounded-[2.5rem] overflow-hidden border border-slate-100 shadow-sm hover:shadow-2xl transition-all duration-500">
+                                <div key={item} className="group cursor-pointer bg-white rounded-[2.5rem] overflow-hidden border border-slate-100 shadow-sm hover:shadow-2xl transition-all duration-500" onClick={handleCourseClick}>
                                     <div className="h-64 bg-slate-200 relative overflow-hidden">
                                         <img
                                             src={`https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800&q=80`}
