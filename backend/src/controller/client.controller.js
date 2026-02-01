@@ -46,4 +46,4 @@ const enrollIntoProgram = async(req,res)=> {
 
 }
 
-export default { getAllPrograms, getProgramById };
+export default { getAllPrograms, getProgramById, enrollIntoProgram};
