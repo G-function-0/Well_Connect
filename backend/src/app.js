@@ -3,6 +3,7 @@ import { config } from "./config/index.js";
 import { connectDB } from "./db/db.js";
 import authRouter from "./routes/auth.routes.js";
 import { trainerRouter } from "./routes/trainer.routes.js";
+import { clientRouter } from "./routes/client.routes.js";
 
 await connectDB();
 
@@ -13,8 +14,7 @@ app.use(express.json());
 
 app.use("/auth",authRouter);
 app.use("/trainer",trainerRouter)
-// app.use("/client",clientRouter)
-app.use("/programs")
+app.use("/client",clientRouter);
 
 
 app.listen(PORT,()=>{
