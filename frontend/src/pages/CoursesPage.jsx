@@ -11,13 +11,13 @@ const CoursesPage = () => {
     const navigate = useNavigate();
 
     const handleCourseClick = () => {
-        navigate("/CourseDetail");
+        navigate("/client/CourseDetail");
         console.log("Course clicked");
     };
 
     return (
         <div className="min-h-screen bg-[#f8fafc] text-slate-900 font-sans">
-
+            
             {/* 1. HERO SECTION */}
             <section className="relative bg-[#0f172a] pt-32 pb-24 px-6 overflow-hidden">
                 <div className="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-emerald-500/10 blur-[120px] rounded-full" />

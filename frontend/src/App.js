@@ -1,5 +1,5 @@
 import './App.css';
-import { Routes, Route } from 'react-router';
+import { Routes, Route, Router } from 'react-router';
 import Header from './components/layout/Header.jsx';
 import Home from './pages/Home.jsx';
 import Footer from './components/layout/Footer.jsx';
@@ -13,8 +13,8 @@ import NutritionPage from './pages/NutritionPage.jsx';
 import ProfilePage from './pages/ProfilePage.jsx';
 import TrainerDashboardpage from './pages/TrainerDashboardpage.jsx';
 import TrainerProfilePage from './pages/TrainerProfilePage.jsx';
-import CoursesPage from './pages/Coursespages.jsx';
-import RegisterPage from './pages/Registerpage.jsx';
+import CoursesPage from './pages/CoursesPage.jsx';  
+import RegisterPage from './pages/RegisterPage.jsx';
 import AddProgramPage from './pages/AddProgramPage.jsx';
 
 
@@ -23,23 +23,31 @@ import AddProgramPage from './pages/AddProgramPage.jsx';
 function App() {
     return (<>
         <Header />
-
         <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/courses" element={<CoursesPage />} />
-            <Route path="/register" element={<RegisterPage />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/dashboard" element={<DashboardPage />} />
-            <Route path="/nutrition" element={<NutritionPage />} />
-            <Route path="/CourseDetail" element={<CourseDetailPage />} />
-            <Route path="/Profile" element={<ProfilePage />} />
-            <Route path="my-courses" element={<MyCoursesPage />} />
-            <Route path="live-classes" element={<LiveClassPage />} />
-            <Route path="TrainerDashboard" element={<TrainerDashboardpage />} />
-            <Route path="TrainerProfile" element={<TrainerProfilePage />} />
-            <Route path="course-player" element={<CoursePlayerPage />} />
-            <Route path="add-program" element={<AddProgramPage />} />
 
+            <Route path="/auth">
+                <Route path="register" element={<RegisterPage />} />
+                <Route path="login" element={<LoginPage />} />
+            </Route>
+
+            <Route path="/client">
+                <Route index element={<Home />} />
+                <Route path="profile" element={<ProfilePage />} />
+                <Route path="my-courses" element={<MyCoursesPage />} />
+                <Route path="live-classes" element={<LiveClassPage />} />
+                <Route path="course-player" element={<CoursePlayerPage />} />
+                <Route path="courses" element={<CoursesPage />} />
+                <Route path="dashboard" element={<DashboardPage />} />
+                <Route path="nutrition" element={<NutritionPage />} />
+            </Route>
+            <Route path="/trainer" >
+                  <Route index element={<Home />} />
+                <Route path="profile" element={<TrainerProfilePage />} />
+                <Route path="dashboard" element={<TrainerDashboardpage />} />
+                <Route path="add-program" element={<AddProgramPage />} />
+            </Route>
+
+            <Route path="/course-detail" element={<CourseDetailPage />} />
         </Routes>
 
         <Footer />

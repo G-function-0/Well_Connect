@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 // --- Reusable Modern Components ---
 
@@ -115,7 +116,7 @@ export default function RegisterPage() {
                         </form>
 
                         <p style={styles.loginLink}>
-                            Already a member? <a href="/login" style={styles.anchor}>Sign In</a>
+                            Already a member? <Link to="/auth/login" style={styles.anchor}>Sign In</Link>
                         </p>
                     </div>
                 </section>

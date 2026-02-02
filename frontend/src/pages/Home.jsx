@@ -30,10 +30,10 @@ const Home = () => {
                     </p>
 
                     <div className="flex flex-col sm:flex-row justify-center items-center gap-5">
-                        <Link to="/courses" className="bg-emerald-500 hover:bg-emerald-600 text-white border-none px-10 py-6 text-lg rounded-2xl transition-all shadow-lg shadow-emerald-500/25">
+                        <Link to="/client/courses" className="bg-emerald-500 hover:bg-emerald-600 text-white border-none px-10 py-6 text-lg rounded-2xl transition-all shadow-lg shadow-emerald-500/25">
                             Start Training Now
                         </Link>
-                        <Link to="/register" className="border-2 border-slate-700 text-white hover:bg-slate-800 px-10 py-6 text-lg rounded-2xl">
+                        <Link to="/auth/register" className="border-2 border-slate-700 text-white hover:bg-slate-800 px-10 py-6 text-lg rounded-2xl">
                             Join for Free
                         </Link>
                     </div>
@@ -98,7 +98,7 @@ const Home = () => {
                                 Achieve your goals with our most popular courses led by industry experts.
                             </p>
                         </div>
-                        <Link to="/courses" className="hidden md:block text-emerald-600 font-bold flex items-center gap-2 hover:bg-emerald-50 px-4 py-2 rounded-lg">
+                        <Link to="/client/courses" className="hidden md:block text-emerald-600 font-bold flex items-center gap-2 hover:bg-emerald-50 px-4 py-2 rounded-lg">
                             View All Programs
                             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -141,7 +141,7 @@ const Home = () => {
                                 </p>
                             </div>
                             <div className="shrink-0">
-                                <Link to="/register" className="bg-white text-slate-900 hover:bg-slate-100 px-12 py-7 text-xl font-bold rounded-2xl shadow-2xl">
+                                <Link to="/auth/register" className="bg-white text-slate-900 hover:bg-slate-100 px-12 py-7 text-xl font-bold rounded-2xl shadow-2xl">
                                     Get Started Now
                                 </Link>
                             </div>

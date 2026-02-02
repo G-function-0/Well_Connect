@@ -43,7 +43,7 @@ const programSchema = new mongoose.Schema({
     trainerId : {
         type : mongoose.Schema.Types.ObjectId,
         ref : "User",
-        required : true
+        // required : true
     },
 },
     {   

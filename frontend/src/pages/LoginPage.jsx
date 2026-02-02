@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 // --- Sub-component: Next-Gen Input ---
 const SmartInput = ({ type, label, placeholder, icon, rightAction }) => {
@@ -68,7 +69,7 @@ export default function LoginPage() {
                     <header style={styles.header}>
                         <h2 style={styles.cardTitle}>Welcome Back</h2>
                         <p style={styles.cardSubtitle}>
-                            New here? <a href="/register" style={styles.textLink}>Start your journey</a>
+                            New here? <Link to="/auth/register" style={styles.textLink}>Start your journey</Link>
                         </p>
                     </header>
 
