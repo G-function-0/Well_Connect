@@ -4,16 +4,21 @@ import { connectDB } from "./db/db.js";
 import authRouter from "./routes/auth.routes.js";
 import { trainerRouter } from "./routes/trainer.routes.js";
 import { clientRouter } from "./routes/client.routes.js";
+import cors from "cors";
+
 
 await connectDB();
-
 const PORT = config.port;
 const app = express();
+
+app.use(cors({
+    origin : ["http://localhost:3000",""]
+}))
 
 app.use(express.json());
 
 app.use("/auth",authRouter);
-app.use("/trainer",trainerRouter)
+app.use("/trainer",trainerRouter);
 app.use("/client",clientRouter);
 
 

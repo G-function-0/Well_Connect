@@ -17,7 +17,7 @@ const Header = () => {
         <header className="h-16 px-8 flex items-center justify-between bg-[#0f172a] border-b border-white/10 sticky top-0 z-50">
             {/* Left: Logo - Set to white for dark mode visibility */}
             <div className="text-xl font-bold text-white tracking-tight">
-                <Link to="/">
+                <Link to="/client">
                     Fitness<span className="text-cyan-400">Guide</span>
                 </Link>
             </div>
@@ -35,13 +35,13 @@ const Header = () => {
 
             {/* Right: Navigation - Cleaned up with matching colors */}
             <nav className="flex items-center gap-7">
-                <Link to="/courses" className="no-underline text-slate-300 font-medium hover:text-cyan-400 transition-colors">
+                <Link to="/client/courses" className="no-underline text-slate-300 font-medium hover:text-cyan-400 transition-colors">
                     Courses
                 </Link>
-                <Link to="/dashboard" className="no-underline text-slate-300 font-medium hover:text-cyan-400 transition-colors">
+                <Link to="/client/dashboard" className="no-underline text-slate-300 font-medium hover:text-cyan-400 transition-colors">
                     Dashboard
                 </Link>
-                <Link to="/nutrition" className="no-underline text-slate-300 font-medium hover:text-cyan-400 transition-colors">
+                <Link to="/client/nutrition" className="no-underline text-slate-300 font-medium hover:text-cyan-400 transition-colors">
                     Nutrition
                 </Link>
 
