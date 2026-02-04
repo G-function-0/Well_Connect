@@ -1,70 +1,63 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-
-// --- Reusable Modern Components ---
-
-const FeatureItem = ({ text }) => (
-    <li style={styles.featureItem}>
-        <div style={styles.featureIconWrapper}>
-            <svg style={styles.featureIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-            </svg>
-        </div>
-        <span style={styles.featureText}>{text}</span>
-    </li>
-);
-
-const InputField = ({ type, name, placeholder, iconPath }) => {
-    const [isFocused, setIsFocused] = useState(false);
-
-    return (
-        <div style={styles.inputContainer}>
-            <div style={{
-                ...styles.inputWrapper,
-                borderColor: isFocused ? '#10b981' : '#e2e8f0',
-                boxShadow: isFocused ? '0 0 0 4px rgba(16, 185, 129, 0.1)' : 'none'
-            }}>
-                <svg style={{ ...styles.inputIcon, color: isFocused ? '#10b981' : '#94a3b8' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={iconPath} />
-                </svg>
-                <input
-                    type={type}
-                    name={name}
-                    onFocus={() => setIsFocused(true)}
-                    onBlur={() => setIsFocused(false)}
-                    placeholder={placeholder}
-                    style={styles.input}
-                />
-            </div>
-        </div>
-    );
-};
+import { User, Mail, Lock, ArrowRight, CheckCircle2, Dumbbell } from 'lucide-react';
 
 export default function RegisterPage() {
+    // 1. Unified Form State
+    const [formData, setFormData] = useState({
+        role: 'learner',
+        name: '',
+        email: '',
+        password: ''
+    });
+
+    // 2. Handle Input Changes
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({ ...prev, [name]: value }));
+    };
+
+    // 3. Handle Submit
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log("Secure Registration Data:", formData);
+        alert("Account created successfully!");
+    };
+
     return (
-        <div style={styles.pageContainer}>
-            <main style={styles.layout}>
+        <div className="min-h-screen bg-slate-950 flex items-center justify-center p-6 font-sans">
+            <main className="w-full max-w-6xl h-full lg:h-[800px] flex flex-col lg:flex-row bg-white rounded-[2.5rem] overflow-hidden shadow-2xl shadow-black/50">
 
                 {/* Visual Branding Section */}
-                <section style={styles.visualSide}>
-                    <div style={styles.imageOverlay} />
-                    <img
-                        src="https://images.unsplash.com/photo-1549060279-7e168fcee0c2?auto=format&fit=crop&q=80"
-                        alt="Gym"
-                        style={styles.heroImage}
-                    />
+                <section className="relative w-full lg:w-[45%] p-10 lg:p-16 flex flex-col justify-center overflow-hidden bg-slate-900">
+                    <div className="absolute inset-0 z-0">
+                        <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-slate-900/90 to-emerald-900/20 z-10" />
+                        <img
+                            src="https://images.unsplash.com/photo-1549060279-7e168fcee0c2?auto=format&fit=crop&q=80"
+                            alt="Fitness"
+                            className="w-full h-full object-cover opacity-60"
+                        />
+                    </div>
 
-                    <div style={styles.visualContent}>
-                        <div style={styles.badge}>NEW: VERSION 2.0</div>
-                        <h1 style={styles.heroTitle}>
+                    <div className="relative z-20">
+                        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[10px] font-black uppercase tracking-widest mb-8">
+                            <span className="relative flex h-2 w-2">
+                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                            </span>
+                            Version 2.0 Live
+                        </div>
+
+                        <h1 className="text-5xl lg:text-6xl font-black text-white leading-none mb-6">
                             Elevate your <br />
-                            <span style={styles.accentText}>Fitness Journey.</span>
+                            <span className="text-emerald-500">Fitness Journey.</span>
                         </h1>
-                        <p style={styles.heroSubtitle}>
-                            Join over 10,000+ athletes achieving their peak performance with data-driven coaching.
+
+                        <p className="text-slate-400 text-lg mb-10 leading-relaxed max-w-md">
+                            Join 10,000+ athletes achieving peak performance with data-driven coaching and smart intelligence.
                         </p>
 
-                        <ul style={styles.featureList}>
+                        <ul className="space-y-5">
                             <FeatureItem text="Biometric Progress Tracking" />
                             <FeatureItem text="Elite Trainer Marketplace" />
                             <FeatureItem text="Smart Meal Intelligence" />
@@ -72,51 +65,73 @@ export default function RegisterPage() {
                     </div>
                 </section>
 
-                {/* Interaction/Form Section */}
-                <section style={styles.formSide}>
-                    <div style={styles.glassCard}>
-                        <header style={styles.header}>
-                            <h2 style={styles.title}>Create Account</h2>
-                            <p style={styles.subtitle}>Start your 14-day free trial today.</p>
+                {/* Form Section */}
+                <section className="flex-1 bg-slate-50 p-8 lg:p-16 flex items-center justify-center">
+                    <div className="w-full max-w-md">
+                        <header className="mb-10 text-center lg:text-left">
+                            <h2 className="text-3xl font-black text-slate-900 tracking-tight">Create Account</h2>
+                            <p className="text-slate-500 font-medium mt-2">Start your 14-day free trial today.</p>
                         </header>
 
-                        <form style={styles.form}>
-                            <div style={styles.rolePicker}>
-                                <label style={styles.roleOptionActive}>
-                                    <input type="radio" name="role" defaultChecked style={{ display: 'none' }} />
-                                    <span style={styles.roleLabel}>Learner</span>
-                                </label>
-                                <label style={styles.roleOption}>
-                                    <input type="radio" name="role" style={{ display: 'none' }} />
-                                    <span style={styles.roleLabel}>Trainer</span>
-                                </label>
-                            </div>
-
-                            <div style={styles.fieldGrid}>
-                                <InputField
-                                    type="text" name="name" placeholder="Full Name"
-                                    iconPath="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                        <form onSubmit={handleSubmit} className="space-y-6">
+                            {/* Role Picker */}
+                            <div className="flex bg-slate-200/50 p-1 rounded-2xl gap-1">
+                                <RoleButton
+                                    active={formData.role === 'learner'}
+                                    onClick={() => setFormData(p => ({ ...p, role: 'learner' }))}
+                                    label="Learner"
                                 />
-                                <InputField
-                                    type="email" name="email" placeholder="Email Address"
-                                    iconPath="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                                />
-                                <InputField
-                                    type="password" name="password" placeholder="Password"
-                                    iconPath="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+                                <RoleButton
+                                    active={formData.role === 'trainer'}
+                                    onClick={() => setFormData(p => ({ ...p, role: 'trainer' }))}
+                                    label="Trainer"
                                 />
                             </div>
 
-                            <button type="submit" style={styles.submitButton}>
+                            <div className="space-y-4">
+                                <InputField
+                                    icon={<User size={20} />}
+                                    type="text"
+                                    name="name"
+                                    placeholder="Full Name"
+                                    value={formData.name}
+                                    onChange={handleChange}
+                                    required
+                                />
+                                <InputField
+                                    icon={<Mail size={20} />}
+                                    type="email"
+                                    name="email"
+                                    placeholder="Email Address"
+                                    value={formData.email}
+                                    onChange={handleChange}
+                                    required
+                                />
+                                <InputField
+                                    icon={<Lock size={20} />}
+                                    type="password"
+                                    name="password"
+                                    placeholder="Create Password"
+                                    value={formData.password}
+                                    onChange={handleChange}
+                                    required
+                                />
+                            </div>
+
+                            <button
+                                type="submit"
+                                className="w-full bg-slate-900 hover:bg-emerald-600 text-white font-bold py-4 rounded-2xl transition-all duration-300 flex items-center justify-center gap-3 group shadow-xl shadow-slate-900/20 active:scale-[0.98]"
+                            >
                                 Get Started
-                                <svg style={{ width: '1.25rem', height: '1.25rem' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                                </svg>
+                                <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                             </button>
                         </form>
 
-                        <p style={styles.loginLink}>
-                            Already a member? <Link to="/auth/login" style={styles.anchor}>Sign In</Link>
+                        <p className="text-center mt-8 text-slate-500 font-medium text-sm">
+                            Already a member?{' '}
+                            <Link to="/auth/login" className="text-emerald-600 font-bold hover:underline">
+                                Sign In
+                            </Link>
                         </p>
                     </div>
                 </section>
@@ -125,208 +140,46 @@ export default function RegisterPage() {
     );
 }
 
-// --- Next Level Styles ---
+// --- Sub-components for Cleanliness ---
 
-const styles = {
-    pageContainer: {
-        minHeight: '100vh',
-        backgroundColor: '#0f172a',
-        fontFamily: '"Inter", sans-serif',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    layout: {
-        width: '100%',
-        maxWidth: '1200px',
-        height: '850px',
-        display: 'flex',
-        backgroundColor: '#ffffff',
-        borderRadius: '2rem',
-        overflow: 'hidden',
-        boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)',
-    },
-    visualSide: {
-        width: '45%',
-        position: 'relative',
-        display: 'flex',
-        alignItems: 'center',
-        padding: '4rem',
-        color: '#ffffff',
-    },
-    heroImage: {
-        position: 'absolute',
-        inset: 0,
-        width: '100%',
-        height: '100%',
-        objectFit: 'cover',
-    },
-    imageOverlay: {
-        position: 'absolute',
-        inset: 0,
-        background: 'linear-gradient(135deg, #0f172a 30%, rgba(15, 23, 42, 0.6) 100%)',
-        zIndex: 1,
-    },
-    visualContent: {
-        position: 'relative',
-        zIndex: 2,
-    },
-    badge: {
-        display: 'inline-block',
-        padding: '0.5rem 1rem',
-        backgroundColor: 'rgba(52, 211, 153, 0.1)',
-        border: '1px solid rgba(52, 211, 153, 0.3)',
-        borderRadius: '2rem',
-        color: '#34d399',
-        fontSize: '0.75rem',
-        fontWeight: 700,
-        marginBottom: '2rem',
-    },
-    heroTitle: {
-        fontSize: '3.5rem',
-        lineHeight: 1.1,
-        fontWeight: 800,
-        marginBottom: '1.5rem',
-    },
-    accentText: {
-        color: '#10b981',
-    },
-    heroSubtitle: {
-        fontSize: '1.125rem',
-        color: '#94a3b8',
-        marginBottom: '3rem',
-        lineHeight: 1.6,
-    },
-    featureList: {
-        listStyle: 'none',
-        padding: 0,
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '1.25rem',
-    },
-    featureItem: {
-        display: 'flex',
-        alignItems: 'center',
-        gap: '1rem',
-    },
-    featureIconWrapper: {
-        width: '2rem',
-        height: '2rem',
-        backgroundColor: 'rgba(16, 185, 129, 0.2)',
-        borderRadius: '0.5rem',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    featureIcon: {
-        width: '1.25rem',
-        height: '1.25rem',
-        color: '#10b981',
-    },
-    formSide: {
-        flex: 1,
-        backgroundColor: '#f8fafc',
-        padding: '4rem',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    glassCard: {
-        width: '100%',
-        maxWidth: '400px',
-    },
-    header: {
-        marginBottom: '2.5rem',
-    },
-    title: {
-        fontSize: '2rem',
-        fontWeight: 800,
-        color: '#1e293b',
-        margin: 0,
-    },
-    subtitle: {
-        color: '#64748b',
-        marginTop: '0.5rem',
-    },
-    rolePicker: {
-        display: 'flex',
-        backgroundColor: '#f1f5f9',
-        padding: '0.35rem',
-        borderRadius: '0.75rem',
-        marginBottom: '2rem',
-    },
-    roleOptionActive: {
-        flex: 1,
-        textAlign: 'center',
-        padding: '0.75rem',
-        backgroundColor: '#ffffff',
-        borderRadius: '0.5rem',
-        boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.05)',
-        cursor: 'pointer',
-        fontWeight: 600,
-        color: '#0f172a',
-    },
-    roleOption: {
-        flex: 1,
-        textAlign: 'center',
-        padding: '0.75rem',
-        cursor: 'pointer',
-        fontWeight: 600,
-        color: '#64748b',
-    },
-    fieldGrid: {
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '1.25rem',
-        marginBottom: '2rem',
-    },
-    inputWrapper: {
-        display: 'flex',
-        alignItems: 'center',
-        backgroundColor: '#ffffff',
-        border: '2px solid #e2e8f0',
-        borderRadius: '0.875rem',
-        padding: '0 1rem',
-        transition: 'all 0.2s ease',
-    },
-    inputIcon: {
-        width: '1.25rem',
-        height: '1.25rem',
-        marginRight: '0.75rem',
-    },
-    input: {
-        flex: 1,
-        border: 'none',
-        padding: '1rem 0',
-        outline: 'none',
-        fontSize: '0.95rem',
-        color: '#1e293b',
-    },
-    submitButton: {
-        width: '100%',
-        padding: '1.125rem',
-        backgroundColor: '#0f172a',
-        color: '#ffffff',
-        border: 'none',
-        borderRadius: '0.875rem',
-        fontWeight: 700,
-        fontSize: '1rem',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        gap: '0.75rem',
-        cursor: 'pointer',
-        transition: 'transform 0.2s ease, background-color 0.2s ease',
-    },
-    loginLink: {
-        textAlign: 'center',
-        marginTop: '2rem',
-        color: '#64748b',
-        fontSize: '0.875rem',
-    },
-    anchor: {
-        color: '#10b981',
-        fontWeight: 700,
-        textDecoration: 'none',
-    },
+const FeatureItem = ({ text }) => (
+    <li className="flex items-center gap-4 group">
+        <div className="bg-emerald-500/20 p-2 rounded-xl text-emerald-500 group-hover:scale-110 transition-transform">
+            <CheckCircle2 size={20} />
+        </div>
+        <span className="text-slate-300 font-semibold tracking-wide">{text}</span>
+    </li>
+);
+
+const RoleButton = ({ active, onClick, label }) => (
+    <button
+        type="button"
+        onClick={onClick}
+        className={`flex-1 py-3 rounded-xl font-bold text-sm transition-all ${active
+                ? 'bg-white text-slate-900 shadow-sm'
+                : 'text-slate-500 hover:text-slate-700'
+            }`}
+    >
+        {label}
+    </button>
+);
+
+const InputField = ({ icon, ...props }) => {
+    const [focused, setFocused] = useState(false);
+    return (
+        <div className={`relative group transition-all duration-300`}>
+            <div className={`absolute left-4 top-1/2 -translate-y-1/2 transition-colors ${focused ? 'text-emerald-500' : 'text-slate-400'}`}>
+                {icon}
+            </div>
+            <input
+                {...props}
+                onFocus={() => setFocused(true)}
+                onBlur={() => setFocused(false)}
+                className={`w-full bg-white border-2 py-4 pl-12 pr-4 rounded-2xl outline-none transition-all ${focused
+                        ? 'border-emerald-500 ring-4 ring-emerald-500/10'
+                        : 'border-slate-200 group-hover:border-slate-300'
+                    } font-medium text-slate-900 placeholder:text-slate-400`}
+            />
+        </div>
+    );
 };

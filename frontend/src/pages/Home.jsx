@@ -149,24 +149,6 @@ const Home = () => {
                     </div>
                 </div>
             </section>
-            {/* 
-            {/* Footer */}
-            {/* <footer className="bg-slate-900 text-white py-12">
-                <div className="max-w-7xl mx-auto px-6 text-center">
-                    <div className="text-2xl font-bold mb-4">FitGuide</div>
-                    <p className="text-slate-400 mb-6">Your journey to fitness starts here</p>
-                    <div className="flex justify-center gap-6 text-sm text-slate-400">
-                        <a href="#">About</a>
-                        <a href="#">Courses</a>
-                        <a href="#">Contact</a>
-                        <a href="#">Privacy</a>
-                    </div>
-                    <div className="mt-8 text-slate-500 text-sm">
-                        © 2025 FitGuide. All rights reserved.
-                    </div>
-                </div>
-            </footer> */}
-
         </div>
     );
 };
