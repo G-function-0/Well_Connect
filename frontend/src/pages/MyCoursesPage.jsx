@@ -1,7 +1,5 @@
+import React from "react";
 import { useNavigate } from "react-router-dom";
-
-
-
 
 export default function MyCoursesPage() {
     const navigate = useNavigate();
@@ -12,89 +10,126 @@ export default function MyCoursesPage() {
         { title: 'Yoga for Beginners', duration: '60', progress: 100, thumbnail: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80', active: false }
     ];
 
-    const navigateToCoursePlayerPage = () => {
-        navigate("/course-player");
-    };
-
     return (
-        <div style={styles.pageContainer}>
+        <div className="relative min-h-screen overflow-x-hidden bg-slate-950 font-sans text-slate-100">
             {/* Background Decorative Elements */}
-            <div style={styles.blob1} />
-            <div style={styles.blob2} />
+            <div className="absolute -left-[10%] -top-[10%] z-0 h-[40%] w-[40%] rounded-full bg-emerald-500/10 blur-[120px]" />
+            <div className="absolute bottom-[10%] -right-[10%] z-0 h-[30%] w-[30%] rounded-full bg-blue-500/10 blur-[100px]" />
 
-            <main style={styles.mainContent}>
+            <main className="relative z-10 mx-auto max-w-7xl px-6 py-16">
 
                 {/* Bento Header */}
-                <section style={styles.bentoGrid}>
+                <section className="mb-16 grid grid-cols-1 gap-6 md:grid-cols-3">
+
                     {/* Main Hero Card */}
-                    <div style={styles.heroCard}>
-                        <div style={styles.heroOverlay}>
-                            <span style={styles.kicker}>Welcome Back, Champ</span>
-                            <h1 style={styles.heroTitle}>KEEP<br /><span style={styles.textGradient}>PUSHING.</span></h1>
-                            <p style={styles.heroSubtext}>You've crushed 85% of your weekly goal. Keep the momentum high.</p>
-                            <button style={styles.primaryBtn}>Resume Last Session</button>
+                    <div className="relative col-span-1 flex items-center overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-emerald-500 to-emerald-700 p-10 shadow-2xl shadow-emerald-500/20 md:col-span-2">
+                        <div className="relative z-10 max-w-[60%]">
+                            <span className="mb-4 block text-[10px] font-black uppercase tracking-[0.2em] text-emerald-100">
+                                Welcome Back, Champ
+                            </span>
+                            <h1 className="mb-6 text-6xl font-black leading-[0.9] tracking-tighter md:text-7xl">
+                                KEEP<br />
+                                <span className="text-transparent" style={{ WebkitTextStroke: '1px rgba(255,255,255,0.6)' }}>PUSHING.</span>
+                            </h1>
+                            <p className="mb-8 font-medium text-emerald-100">
+                                You've crushed 85% of your weekly goal. Keep the momentum high.
+                            </p>
+                            <button className="rounded-2xl bg-white px-8 py-3 text-sm font-black text-emerald-700 transition-transform hover:scale-105 active:scale-95">
+                                Resume Last Session
+                            </button>
                         </div>
-                        <div style={styles.heroIconWrapper}>
-                            <svg style={styles.heroIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+
+                        {/* Huge Decorative Icon */}
+                        <div className="absolute -right-10 -bottom-10 opacity-10">
+                            <svg className="h-80 w-80 -rotate-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M13 10V3L4 14h7v7l9-11h-7z" />
                             </svg>
                         </div>
                     </div>
 
                     {/* Stats Card */}
-                    <div style={styles.statsCard}>
-                        <div style={styles.cardHeader}>
-                            <div style={styles.iconCircle}><ChartIcon /></div>
-                            <span style={styles.label}>ACTIVITY</span>
+                    <div className="flex flex-col justify-between rounded-[2.5rem] border border-white/5 bg-slate-900 p-10">
+                        <div className="flex items-center justify-between">
+                            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-400">
+                                <ChartIcon />
+                            </div>
+                            <span className="text-[10px] font-black tracking-widest text-slate-500">ACTIVITY</span>
                         </div>
-                        <div style={styles.statsMain}>
-                            <span style={styles.statsNumber}>05</span>
-                            <span style={styles.statsUnit}>Programs</span>
+
+                        <div className="my-8 flex items-baseline">
+                            <span className="text-7xl font-black tracking-tighter">05</span>
+                            <span className="ml-2 text-lg font-bold text-slate-500">Programs</span>
                         </div>
-                        <div style={styles.progressBarMini}>
-                            <div style={{ ...styles.progressFillMini, width: '60%', backgroundColor: '#34d399' }} />
-                        </div>
-                        <div style={styles.statsFooter}>
-                            <span style={styles.footerItem}><b>2</b> Done</span>
-                            <span style={styles.footerItem}><b>3</b> Active</span>
+
+                        <div>
+                            <div className="mb-6 h-1.5 w-full overflow-hidden rounded-full bg-slate-800">
+                                <div className="h-full w-[60%] bg-emerald-400" />
+                            </div>
+                            <div className="flex gap-6 border-t border-slate-800 pt-6">
+                                <span className="text-xs text-slate-400"><b className="text-white">2</b> Done</span>
+                                <span className="text-xs text-slate-400"><b className="text-white">3</b> Active</span>
+                            </div>
                         </div>
                     </div>
                 </section>
 
                 {/* Course Section */}
                 <section>
-                    <div style={styles.sectionHeader}>
-                        <h2 style={styles.sectionTitle}>Your Active Squad</h2>
-                        <div style={styles.filterDots}>
-                            <div style={styles.dotActive} />
-                            <div style={styles.dot} />
-                            <div style={styles.dot} />
+                    <div className="mb-10 flex items-center justify-between">
+                        <h2 className="text-xl font-black tracking-tight text-white">Your Active Squad</h2>
+                        <div className="flex gap-2">
+                            <div className="h-2 w-6 rounded-full bg-blue-500" />
+                            <div className="h-2 w-2 rounded-full bg-slate-800" />
+                            <div className="h-2 w-2 rounded-full bg-slate-800" />
                         </div>
                     </div>
 
-                    <div style={styles.courseGrid}>
+                    <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
                         {courses.map((course, index) => (
-                            <div key={index} style={styles.courseCard} onClick={navigateToCoursePlayerPage}>
-                                <div style={styles.imageWrapper}>
-                                    <img src={course.thumbnail} alt={course.title} style={styles.courseImage} />
+                            <div
+                                key={index}
+                                onClick={() => navigate("/course-player")}
+                                className="group cursor-pointer rounded-[2.25rem] border border-white/5 bg-slate-900/40 p-5 transition-all duration-300 hover:bg-slate-900/60 hover:shadow-2xl hover:shadow-black/40"
+                            >
+                                <div className="relative mb-6 h-56 overflow-hidden rounded-[1.75rem]">
+                                    <img
+                                        src={course.thumbnail}
+                                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                        alt={course.title}
+                                    />
+
                                     {course.progress === 100 && (
-                                        <div style={styles.completeBadge}><CheckIcon /></div>
+                                        <div className="absolute inset-0 flex items-center justify-center bg-emerald-500/85 backdrop-blur-sm">
+                                            <CheckIcon />
+                                        </div>
                                     )}
-                                    <div style={styles.playButton}><PlayIcon /></div>
+
+                                    <div className="absolute bottom-4 right-4 flex h-11 w-11 items-center justify-center rounded-full border border-white/30 bg-white/20 backdrop-blur-md transition-transform group-hover:scale-110">
+                                        <PlayIcon />
+                                    </div>
                                 </div>
 
-                                <div style={styles.cardBody}>
-                                    <h3 style={styles.courseTitle}>{course.title}</h3>
+                                <div className="px-2">
+                                    <h3 className="mb-5 h-12 text-lg font-black leading-tight line-clamp-2">
+                                        {course.title}
+                                    </h3>
 
-                                    <div style={styles.cardMeta}>
-                                        <div style={styles.metaItem}><ClockIcon /> {course.duration}m</div>
-                                        <div style={{ ...styles.metaItem, color: course.progress === 100 ? '#10b981' : '#f97316' }}>
+                                    <div className="mb-4 flex items-center justify-between">
+                                        <div className="flex items-center gap-1 text-[10px] font-black text-slate-500">
+                                            <ClockIcon /> {course.duration}M
+                                        </div>
+                                        <div className={`text-[10px] font-black tracking-widest ${course.progress === 100 ? 'text-emerald-500' : 'text-orange-500'
+                                            }`}>
                                             {course.progress === 100 ? 'COMPLETED' : `${course.progress}% READY`}
                                         </div>
                                     </div>
 
-                                    <div style={styles.progressContainer}>
-                                        <div style={{ ...styles.progressFill, width: `${course.progress}%`, backgroundColor: course.progress === 100 ? '#10b981' : '#f97316' }} />
+                                    <div className="h-1.5 w-full overflow-hidden rounded-full bg-slate-800">
+                                        <div
+                                            className={`h-full transition-all duration-1000 ${course.progress === 100 ? 'bg-emerald-500' : 'bg-orange-500'
+                                                }`}
+                                            style={{ width: `${course.progress}%` }}
+                                        />
                                     </div>
                                 </div>
                             </div>
@@ -107,57 +142,7 @@ export default function MyCoursesPage() {
 }
 
 // --- Icons ---
-const ChartIcon = () => <svg width="20" height="20" fill="none" stroke="#34d399" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>;
-const CheckIcon = () => <svg width="24" height="24" fill="white" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" /></svg>;
-const PlayIcon = () => <svg width="20" height="20" fill="white" viewBox="0 0 20 20"><path d="M4.5 3.5v13L16 10 4.5 3.5z" /></svg>;
-const ClockIcon = () => <svg width="12" height="12" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>;
-
-// --- Styles ---
-const styles = {
-    pageContainer: { minHeight: '100vh', backgroundColor: '#020617', color: '#f8fafc', fontFamily: '"Inter", sans-serif', overflowX: 'hidden', position: 'relative' },
-    blob1: { position: 'absolute', top: '-10%', left: '-10%', width: '40%', height: '40%', background: 'radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 70%)', zIndex: 0 },
-    blob2: { position: 'absolute', bottom: '10%', right: '-10%', width: '30%', height: '30%', background: 'radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, transparent 70%)', zIndex: 0 },
-    mainContent: { position: 'relative', zIndex: 1, maxWidth: '1200px', margin: '0 auto', padding: '4rem 1.5rem' },
-
-    bentoGrid: { display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem', marginBottom: '4rem' },
-    heroCard: { gridColumn: 'span 2', background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)', borderRadius: '2.5rem', padding: '3.5rem', position: 'relative', overflow: 'hidden', display: 'flex', alignItems: 'center', boxShadow: '0 20px 40px -10px rgba(16, 185, 129, 0.3)' },
-    heroOverlay: { zIndex: 2, maxWidth: '60%' },
-    kicker: { fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.2em', color: '#d1fae5', display: 'block', marginBottom: '1rem' },
-    heroTitle: { fontSize: '4rem', fontWeight: 900, lineHeight: 0.9, marginBottom: '1.5rem', letterSpacing: '-0.04em' },
-    textGradient: { color: 'transparent', WebkitTextStroke: '1px rgba(255,255,255,0.6)' },
-    heroSubtext: { color: '#d1fae5', marginBottom: '2rem', fontSize: '1rem', fontWeight: 500 },
-    primaryBtn: { backgroundColor: 'white', color: '#059669', border: 'none', padding: '12px 28px', borderRadius: '14px', fontWeight: 800, cursor: 'pointer', fontSize: '0.9rem' },
-    heroIconWrapper: { position: 'absolute', right: '-5%', bottom: '-5%', opacity: 0.1 },
-    heroIcon: { width: '20rem', height: '20rem', transform: 'rotate(-15deg)' },
-
-    statsCard: { backgroundColor: '#1e293b', borderRadius: '2.5rem', padding: '2.5rem', border: '1px solid rgba(255,255,255,0.05)', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' },
-    cardHeader: { display: 'flex', justifyContent: 'space-between', alignItems: 'center' },
-    iconCircle: { width: '40px', height: '40px', backgroundColor: 'rgba(52, 211, 153, 0.1)', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center' },
-    label: { fontSize: '0.7rem', fontWeight: 800, color: '#64748b', letterSpacing: '0.1em' },
-    statsMain: { margin: '2rem 0' },
-    statsNumber: { fontSize: '4.5rem', fontWeight: 900, letterSpacing: '-0.05em' },
-    statsUnit: { fontSize: '1rem', color: '#94a3b8', marginLeft: '0.5rem', fontWeight: 600 },
-    progressBarMini: { height: '6px', backgroundColor: '#334155', borderRadius: '10px', overflow: 'hidden', marginBottom: '1.5rem' },
-    statsFooter: { display: 'flex', gap: '2rem', borderTop: '1px solid #334155', paddingTop: '1.5rem' },
-    footerItem: { fontSize: '0.8rem', color: '#94a3b8' },
-
-    sectionHeader: { display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2.5rem' },
-    sectionTitle: { fontSize: '1.25rem', fontWeight: 800, letterSpacing: '-0.02em' },
-    filterDots: { display: 'flex', gap: '8px' },
-    dot: { width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#334155' },
-    dotActive: { width: '24px', height: '8px', borderRadius: '10px', backgroundColor: '#3b82f6' },
-
-    courseGrid: { display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem' },
-    courseCard: { backgroundColor: 'rgba(30, 41, 59, 0.4)', borderRadius: '2.25rem', padding: '1.25rem', border: '1px solid rgba(255,255,255,0.05)', transition: 'transform 0.3s ease' },
-    imageWrapper: { position: 'relative', height: '14rem', borderRadius: '1.75rem', overflow: 'hidden', marginBottom: '1.5rem' },
-    courseImage: { width: '100%', height: '100%', objectFit: 'cover' },
-    completeBadge: { position: 'absolute', inset: 0, backgroundColor: 'rgba(16, 185, 129, 0.85)', display: 'flex', alignItems: 'center', justifyContent: 'center', backdropFilter: 'blur(4px)' },
-    playButton: { position: 'absolute', bottom: '1rem', right: '1rem', width: '45px', height: '45px', backgroundColor: 'rgba(255,255,255,0.2)', backdropFilter: 'blur(10px)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1px solid rgba(255,255,255,0.3)' },
-
-    cardBody: { padding: '0 0.5rem' },
-    courseTitle: { fontSize: '1.1rem', fontWeight: 800, lineHeight: 1.3, marginBottom: '1.25rem', height: '2.8rem', overflow: 'hidden' },
-    cardMeta: { display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' },
-    metaItem: { fontSize: '0.7rem', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '4px', color: '#94a3b8' },
-    progressContainer: { height: '6px', backgroundColor: '#1e293b', borderRadius: '10px', overflow: 'hidden' },
-    progressFill: { height: '100%', borderRadius: '10px', transition: 'width 1s ease-in-out' }
-};
+const ChartIcon = () => <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>;
+const CheckIcon = () => <svg className="h-8 w-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7" /></svg>;
+const PlayIcon = () => <svg className="h-5 w-5 text-white" fill="currentColor" viewBox="0 0 20 20"><path d="M4.5 3.5v13L16 10 4.5 3.5z" /></svg>;
+const ClockIcon = () => <svg className="h-3 w-3" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>;

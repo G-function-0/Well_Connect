@@ -1,293 +1,164 @@
 import { Link } from "react-router";
 
 export default function CoursePlayerPage() {
-
     const meetUrl = "https://meet.google.com/aiu-tihx-iow";
+
     const handleJoinLive = () => {
         window.open(meetUrl, "_blank", "noopener,noreferrer");
     };
 
-    return (
-        <div style={{
-            minHeight: '100vh',
-            display: 'flex',
-            flexDirection: 'column',
-            backgroundColor: '#f9fafb'
-        }}>
-            <div style={{
-                flex: 1,
-                display: 'flex'
-            }}>
-                {/* Sidebar */}
-                <div style={{
-                    width: '20rem',
-                    backgroundColor: '#ffffff',
-                    borderRight: '1px solid #e5e7eb',
-                    overflowY: 'auto'
-                }}>
-                    <div style={{
-                        padding: '1rem',
-                        borderBottom: '1px solid #e5e7eb'
-                    }}>
-                        <button style={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: '0.5rem',
-                            padding: '0.5rem',
-                            backgroundColor: 'transparent',
-                            border: 'none',
-                            cursor: 'pointer',
-                            color: '#4b5563',
-                            marginBottom: '1rem',
-                            fontSize: '0.875rem'
-                        }}>
-                            <svg style={{ width: '1rem', height: '1rem' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
-                            </svg>
-                            <Link to="/my-courses" style={{ textDecoration: 'none', color: 'inherit' }}>
-                                Back to Courses
-                            </Link>
+    const modules = [
+        { title: 'Introduction to Fitness Training', duration: '15', completed: true, active: true },
+        { title: 'Strength Training Fundamentals', duration: '30', completed: true, active: false },
+        { title: 'Cardiovascular Training', duration: '25', completed: false, active: false },
+        { title: 'Nutrition Basics', duration: '20', completed: false, active: false },
+        { title: 'Recovery and Rest', duration: '30', completed: false, active: false }
+    ];
 
-                        </button>
-                        <h2 style={{
-                            fontWeight: 700,
-                            fontSize: '1.125rem'
-                        }}>
+    return (
+        <div className="min-h-screen flex flex-col bg-slate-50 font-sans">
+            <div className="flex flex-1 flex-col lg:flex-row h-screen overflow-hidden">
+
+                {/* Sidebar */}
+                <aside className="w-full lg:w-80 bg-white border-r border-slate-200 flex flex-col h-full shadow-sm">
+                    {/* Sidebar Header */}
+                    <div className="p-4 border-b border-slate-100">
+                        <Link
+                            to="/my-courses"
+                            className="flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-emerald-600 transition-colors mb-4 group"
+                        >
+                            <svg className="w-4 h-4 transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                            </svg>
+                            Back to Courses
+                        </Link>
+
+                        <h2 className="font-extrabold text-lg text-slate-900 leading-tight">
                             Complete Fitness Masterclass
                         </h2>
-                        <div style={{ marginTop: '0.5rem' }}>
-                            <div style={{
-                                width: '100%',
-                                backgroundColor: '#e5e7eb',
-                                borderRadius: '9999px',
-                                height: '0.5rem'
-                            }}>
-                                <div style={{
-                                    backgroundColor: '#2563eb',
-                                    height: '0.5rem',
-                                    borderRadius: '9999px',
-                                    width: '40%'
-                                }} />
+
+                        {/* Progress Bar */}
+                        <div className="mt-4">
+                            <div className="w-full bg-slate-100 rounded-full h-2">
+                                <div className="bg-emerald-500 h-2 rounded-full w-[40%] transition-all duration-500" />
                             </div>
-                            <p style={{
-                                fontSize: '0.875rem',
-                                color: '#4b5563',
-                                marginTop: '0.25rem'
-                            }}>
+                            <p className="text-xs font-bold text-slate-400 mt-2 uppercase tracking-wider">
                                 40% Complete
                             </p>
                         </div>
                     </div>
-                    <div style={{ padding: '1rem' }}>
-                        <h3 style={{
-                            fontWeight: 600,
-                            marginBottom: '1rem'
-                        }}>
+
+                    {/* Module List */}
+                    <div className="flex-1 overflow-y-auto p-3 space-y-1">
+                        <h3 className="px-3 py-2 text-xs font-black text-slate-400 uppercase tracking-[0.1em]">
                             Course Content
                         </h3>
-                        <div style={{
-                            display: 'flex',
-                            flexDirection: 'column',
-                            gap: '0.5rem'
-                        }}>
-                            {[
-                                { title: 'Introduction to Fitness Training', duration: '15', completed: true, active: true },
-                                { title: 'Strength Training Fundamentals', duration: '30', completed: true, active: false },
-                                { title: 'Cardiovascular Training', duration: '25', completed: false, active: false },
-                                { title: 'Nutrition Basics', duration: '20', completed: false, active: false },
-                                { title: 'Recovery and Rest', duration: '30', completed: false, active: false }
-                            ].map((module, index) => (
-                                <button
-                                    key={index}
-                                    style={{
-                                        width: '100%',
-                                        textAlign: 'left',
-                                        padding: '0.75rem',
-                                        borderRadius: '0.5rem',
-                                        backgroundColor: module.active ? '#dbeafe' : 'transparent',
-                                        color: module.active ? '#1e40af' : '#000000',
-                                        border: 'none',
-                                        cursor: 'pointer',
-                                        transition: 'background-color 0.2s'
-                                    }}
-                                >
-                                    <div style={{
-                                        display: 'flex',
-                                        alignItems: 'center',
-                                        justifyContent: 'space-between'
-                                    }}>
-                                        <div style={{
-                                            display: 'flex',
-                                            alignItems: 'center',
-                                            gap: '0.5rem'
-                                        }}>
+                        {modules.map((module, index) => (
+                            <button
+                                key={index}
+                                className={`w-full flex flex-col gap-1 p-3 rounded-xl transition-all text-left group ${module.active
+                                        ? 'bg-emerald-50 text-emerald-900 shadow-sm border border-emerald-100'
+                                        : 'hover:bg-slate-50 text-slate-700'
+                                    }`}
+                            >
+                                <div className="flex items-start justify-between gap-3">
+                                    <div className="flex items-start gap-3">
+                                        <div className="mt-1">
                                             {module.completed ? (
-                                                <svg style={{ width: '1.25rem', height: '1.25rem', color: '#16a34a' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                                <svg className="w-5 h-5 text-emerald-500" fill="currentColor" viewBox="0 0 20 20">
+                                                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                                                 </svg>
                                             ) : (
-                                                <div style={{
-                                                    width: '1.25rem',
-                                                    height: '1.25rem',
-                                                    border: '2px solid #d1d5db',
-                                                    borderRadius: '50%'
-                                                }} />
+                                                <div className={`w-5 h-5 rounded-full border-2 ${module.active ? 'border-emerald-300' : 'border-slate-300'}`} />
                                             )}
-                                            <span style={{ fontWeight: 500 }}>{module.title}</span>
                                         </div>
-                                        <span style={{
-                                            fontSize: '0.875rem',
-                                            color: '#6b7280'
-                                        }}>
-                                            {module.duration} min
+                                        <span className={`text-sm font-bold leading-snug ${module.active ? 'text-emerald-900' : 'text-slate-700'}`}>
+                                            {module.title}
                                         </span>
                                     </div>
-                                </button>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-
-                {/* Main Content */}
-                <div style={{
-                    flex: 1,
-                    display: 'flex',
-                    flexDirection: 'column'
-                }}>
-                    {/* Video Player */}
-                    <div style={{
-                        flex: 1,
-                        backgroundColor: '#111827'
-                    }}>
-                        <div style={{
-                            position: 'relative',
-                            width: '100%',
-                            maxWidth: '72rem',
-                            margin: '0 auto',
-                            paddingBottom: '56.25%'
-                        }}>
-                            <div style={{
-                                position: 'absolute',
-                                top: 0,
-                                left: 0,
-                                width: '100%',
-                                height: '100%',
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                color: '#ffffff'
-                            }}>
-                                <div style={{ textAlign: 'center' }} onClick={handleJoinLive}>
-                                    <svg style={{
-                                        width: '4rem',
-                                        height: '4rem',
-                                        margin: '0 auto 1rem',
-                                        opacity: 0.5
-                                    }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path>
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                    </svg>
-                                    <p style={{ fontSize: '1.25rem' }}>Join Live</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Module Info */}
-                    <div style={{
-                        backgroundColor: '#ffffff',
-                        borderTop: '1px solid #e5e7eb',
-                        padding: '1.5rem'
-                    }}>
-                        <div style={{
-                            maxWidth: '72rem',
-                            margin: '0 auto'
-                        }}>
-                            <h2 style={{
-                                fontSize: '1.5rem',
-                                fontWeight: 700,
-                                marginBottom: '1rem'
-                            }}>
-                                Introduction to Fitness Training
-                            </h2>
-                            <p style={{
-                                color: '#374151',
-                                marginBottom: '1.5rem'
-                            }}>
-                                Learn the fundamental concepts of fitness training including proper form, safety guidelines, and how to structure an effective workout routine.
-                            </p>
-                            <div style={{
-                                display: 'flex',
-                                alignItems: 'center',
-                                gap: '1rem',
-                                flexWrap: 'wrap'
-                            }}>
-                                <button style={{
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    gap: '0.5rem',
-                                    padding: '0.75rem 1.5rem',
-                                    backgroundColor: '#10b981',
-                                    color: '#ffffff',
-                                    borderRadius: '0.5rem',
-                                    fontWeight: 600,
-                                    border: 'none',
-                                    cursor: 'pointer',
-                                    transition: 'all 0.2s'
-                                }}>
-                                    <svg style={{ width: '1rem', height: '1rem' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                    </svg>
-                                    Mark as Complete
-                                </button>
-                                <div style={{
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    gap: '0.5rem'
-                                }}>
-                                    <span style={{
-                                        fontSize: '0.875rem',
-                                        color: '#4b5563'
-                                    }}>
-                                        Resources:
+                                    <span className="text-[10px] font-bold opacity-50 whitespace-nowrap pt-1">
+                                        {module.duration} MIN
                                     </span>
-                                    <a
-                                        href="#"
-                                        style={{
-                                            display: 'flex',
-                                            alignItems: 'center',
-                                            gap: '0.25rem',
-                                            color: '#2563eb',
-                                            textDecoration: 'none',
-                                            fontSize: '0.875rem'
-                                        }}
-                                    >
-                                        <svg style={{ width: '1rem', height: '1rem' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
-                                        </svg>
-                                        Workout Guide PDF
-                                    </a>
-                                    <a
-                                        href="#"
-                                        style={{
-                                            display: 'flex',
-                                            alignItems: 'center',
-                                            gap: '0.25rem',
-                                            color: '#2563eb',
-                                            textDecoration: 'none',
-                                            fontSize: '0.875rem'
-                                        }}
-                                    >
-                                        <svg style={{ width: '1rem', height: '1rem' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
-                                        </svg>
-                                        Exercise Chart
-                                    </a>
                                 </div>
+                            </button>
+                        ))}
+                    </div>
+                </aside>
+
+                {/* Main Player Area */}
+                <main className="flex-1 flex flex-col bg-slate-50 overflow-y-auto">
+                    {/* Video Container */}
+                    <div className="bg-[#0f172a] w-full flex items-center justify-center shadow-2xl">
+                        <div className="relative w-full max-w-6xl aspect-video bg-black group overflow-hidden">
+                            <div className="absolute inset-0 flex flex-col items-center justify-center text-white z-10">
+                                <button
+                                    onClick={handleJoinLive}
+                                    className="group flex flex-col items-center gap-4 transition-transform hover:scale-110 active:scale-95"
+                                >
+                                    <div className="w-20 h-20 bg-emerald-500 rounded-full flex items-center justify-center shadow-[0_0_0_15px_rgba(16,185,129,0.1)] group-hover:shadow-[0_0_0_20px_rgba(16,185,129,0.2)] transition-all">
+                                        <svg className="w-10 h-10 ml-1" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M8 5v14l11-7z" />
+                                        </svg>
+                                    </div>
+                                    <p className="text-xl font-black uppercase tracking-widest italic">Join Live Session</p>
+                                </button>
+                                <p className="absolute bottom-8 text-white/40 text-sm font-medium">Google Meet Session: aiu-tihx-iow</p>
+                            </div>
+                            {/* Optional Backdrop Image */}
+                            <img
+                                src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?auto=format&fit=crop&q=80"
+                                className="absolute inset-0 w-full h-full object-cover opacity-20"
+                                alt="Background"
+                            />
+                        </div>
+                    </div>
+
+                    {/* Lesson Details */}
+                    <div className="p-8 max-w-5xl">
+                        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+                            <div className="flex-1">
+                                <h2 className="text-3xl font-black text-slate-900 mb-3 italic tracking-tight">
+                                    Introduction to Fitness Training
+                                </h2>
+                                <p className="text-slate-600 leading-relaxed font-medium max-w-3xl">
+                                    Learn the fundamental concepts of fitness training including proper form,
+                                    safety guidelines, and how to structure an effective workout routine for maximum results.
+                                </p>
+                            </div>
+
+                            <button className="flex items-center justify-center gap-2 px-8 py-4 bg-emerald-500 hover:bg-emerald-400 text-white rounded-2xl font-black text-sm uppercase tracking-wider shadow-lg shadow-emerald-500/30 transition-all active:scale-95">
+                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7" />
+                                </svg>
+                                Mark Complete
+                            </button>
+                        </div>
+
+                        <hr className="my-8 border-slate-200" />
+
+                        {/* Resources Section */}
+                        <div className="space-y-4">
+                            <h4 className="text-xs font-black text-slate-400 uppercase tracking-[0.2em]">Lesson Resources</h4>
+                            <div className="flex flex-wrap gap-3">
+                                {[
+                                    { label: 'Workout Guide PDF', icon: 'M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4' },
+                                    { label: 'Exercise Chart', icon: 'M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z' }
+                                ].map((res) => (
+                                    <a
+                                        key={res.label}
+                                        href="#"
+                                        className="flex items-center gap-3 px-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-700 font-bold text-sm hover:border-emerald-500 hover:text-emerald-600 transition-all shadow-sm"
+                                    >
+                                        <svg className="w-5 h-5 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={res.icon} />
+                                        </svg>
+                                        {res.label}
+                                    </a>
+                                ))}
                             </div>
                         </div>
                     </div>
-                </div>
+                </main>
             </div>
         </div>
     );

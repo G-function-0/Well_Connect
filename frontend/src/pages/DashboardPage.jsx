@@ -3,108 +3,137 @@ import { Link } from 'react-router';
 
 // --- Reusable Modern Components ---
 
-const StatCard = ({ label, value, icon, gradient }) => (
-    <div style={{
-        ...styles.card,
-        background: 'white',
-        position: 'relative',
-        overflow: 'hidden',
-        border: '1px solid rgba(255,255,255,0.7)',
-    }}>
+const StatCard = ({ label, value, icon, colorClass, gradientFrom }) => (
+    <div className="relative overflow-hidden rounded-[24px] border border-white/70 bg-white p-6 shadow-xl shadow-slate-200/50 transition-all hover:scale-[1.02]">
         {/* Subtle Decorative Gradient Orb */}
-        <div style={{
-            position: 'absolute', top: '-20px', right: '-20px',
-            width: '100px', height: '100px',
-            background: gradient, opacity: 0.1, borderRadius: '50%', filter: 'blur(20px)'
-        }} />
+        <div className={`absolute -right-5 -top-5 h-24 w-24 rounded-full opacity-10 blur-2xl ${gradientFrom}`} />
 
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+        <div className="flex items-start justify-between">
             <div>
-                <p style={styles.statLabel}>{label}</p>
-                <p style={styles.statValue}>{value}</p>
+                <p className="mb-1 text-sm font-semibold text-slate-500">{label}</p>
+                <p className="text-3xl font-black text-slate-900">{value}</p>
             </div>
-            <div style={{
-                padding: '12px', borderRadius: '14px', background: `${gradient}15`, color: gradient.split(',')[1] || '#2563eb'
-            }}>
+            <div className={`rounded-xl p-3 ${colorClass}`}>
                 {icon}
             </div>
         </div>
-        <div style={{ marginTop: '15px', display: 'flex', alignItems: 'center', gap: '5px' }}>
-            <span style={{ fontSize: '0.75rem', color: '#10b981', fontWeight: 700 }}>↑ 12%</span>
-            <span style={{ fontSize: '0.75rem', color: '#94a3b8' }}>from last month</span>
+        <div className="mt-4 flex items-center gap-1">
+            <span className="text-xs font-bold text-emerald-500">↑ 12%</span>
+            <span className="text-xs font-medium text-slate-400">from last month</span>
         </div>
     </div>
 );
 
 export default function DashboardPage() {
     return (
-        <div style={styles.pageContainer}>
-            {/* Background Decor */}
-            <div style={styles.bgGlow} />
+        <div className="relative min-h-screen overflow-hidden bg-slate-50 font-sans text-slate-900">
+            {/* Background Decor Glow */}
+            <div className="absolute -left-[10%] -top-[10%] z-0 h-[40%] w-[40%] rounded-full bg-blue-500/5 blur-[120px]" />
 
-            <div style={styles.contentWrapper}>
-                <header style={styles.header}>
+            <div className="relative z-10 mx-auto max-w-7xl px-6 py-12">
+                {/* Header */}
+                <header className="mb-12 flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
                     <div>
-                        <h1 style={styles.greeting}>Welcome back, <span style={styles.gradientText}>Sarfaraz Shaikh!</span></h1>
-                        <p style={styles.subtitle}>You've completed 80% of your weekly goal. Keep it up!</p>
+                        <h1 className="text-4xl font-black tracking-tight text-slate-900">
+                            Welcome back, <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Sarfaraz Shaikh!</span>
+                        </h1>
+                        <p className="mt-2 font-medium text-slate-500">You've completed 80% of your weekly goal. Keep it up!</p>
                     </div>
-                    <Link to="/courses" style={styles.primaryBtn}>+ Explore Courses</Link>
+                    <Link to="/courses" className="rounded-xl bg-slate-900 px-6 py-3 text-sm font-bold text-white shadow-lg shadow-slate-900/20 transition-all hover:bg-slate-800 active:scale-95">
+                        + Explore Courses
+                    </Link>
                 </header>
 
                 {/* Stats Grid */}
-                <div style={styles.statsGrid}>
-                    <StatCard label="Enrolled" value="05" gradient="linear-gradient(135deg, #60a5fa, #2563eb)" icon={<BookIcon />} />
-                    <StatCard label="Progress" value="65%" gradient="linear-gradient(135deg, #34d399, #10b981)" icon={<ChartIcon />} />
-                    <StatCard label="Completed" value="02" gradient="linear-gradient(135deg, #f472b6, #db2777)" icon={<CheckIcon />} />
-                    <StatCard label="Sessions" value="03" gradient="linear-gradient(135deg, #fbbf24, #d97706)" icon={<CalendarIcon />} />
+                <div className="mb-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                    <StatCard
+                        label="Enrolled" value="05"
+                        colorClass="bg-blue-50 text-blue-600"
+                        gradientFrom="bg-blue-600"
+                        icon={<BookIcon />}
+                    />
+                    <StatCard
+                        label="Progress" value="65%"
+                        colorClass="bg-emerald-50 text-emerald-600"
+                        gradientFrom="bg-emerald-600"
+                        icon={<ChartIcon />}
+                    />
+                    <StatCard
+                        label="Completed" value="02"
+                        colorClass="bg-pink-50 text-pink-600"
+                        gradientFrom="bg-pink-600"
+                        icon={<CheckIcon />}
+                    />
+                    <StatCard
+                        label="Sessions" value="03"
+                        colorClass="bg-amber-50 text-amber-600"
+                        gradientFrom="bg-amber-600"
+                        icon={<CalendarIcon />}
+                    />
                 </div>
 
-                <div style={styles.mainGrid}>
+                {/* Main Content Grid */}
+                <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
+
                     {/* Active Courses Section */}
-                    <section style={styles.card}>
-                        <div style={styles.cardHeader}>
-                            <h2 style={styles.sectionTitle}>Continue Learning</h2>
-                            <button style={styles.textBtn}>View Schedule</button>
+                    <section className="rounded-[32px] bg-white p-8 shadow-xl shadow-slate-200/40 lg:col-span-2">
+                        <div className="mb-8 flex items-center justify-between">
+                            <h2 className="text-xl font-black tracking-tight">Continue Learning</h2>
+                            <button className="text-sm font-bold text-blue-600 hover:underline">View Schedule</button>
                         </div>
 
-                        <div style={styles.courseList}>
+                        <div className="space-y-4">
                             {[
-                                { title: 'Fitness Masterclass', p: 75, img: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=100' },
-                                { title: 'Nutrition Fundamentals', p: 40, img: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=100' }
+                                { title: 'Fitness Masterclass', p: 75, img: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=200' },
+                                { title: 'Nutrition Fundamentals', p: 40, img: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=200' }
                             ].map((course, i) => (
-                                <div key={i} style={styles.courseItem}>
-                                    <img src={course.img} style={styles.thumbnail} alt="" />
-                                    <div style={{ flex: 1 }}>
-                                        <h4 style={styles.courseName}>{course.title}</h4>
-                                        <div style={styles.progressContainer}>
-                                            <div style={{ ...styles.progressBar, width: `${course.p}%`, background: 'linear-gradient(90deg, #2563eb, #60a5fa)' }} />
+                                <div key={i} className="group flex items-center gap-4 rounded-2xl border border-slate-100 p-4 transition-all hover:border-blue-100 hover:bg-blue-50/30">
+                                    <img src={course.img} className="h-16 w-16 rounded-xl object-cover shadow-md" alt="" />
+                                    <div className="flex-1">
+                                        <h4 className="mb-2 text-[0.95rem] font-bold text-slate-800">{course.title}</h4>
+                                        <div className="h-2 w-full rounded-full bg-slate-100 overflow-hidden">
+                                            <div
+                                                className="h-full rounded-full bg-gradient-to-r from-blue-600 to-blue-400 transition-all duration-1000"
+                                                style={{ width: `${course.p}%` }}
+                                            />
                                         </div>
                                     </div>
-                                    <button style={styles.playBtn}>▶</button>
+                                    <button className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-50 text-blue-600 transition-colors group-hover:bg-blue-600 group-hover:text-white">
+                                        <svg className="ml-1 w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
+                                    </button>
                                 </div>
                             ))}
                         </div>
                     </section>
 
-                    {/* Activity/Live Classes */}
-                    <section style={{ ...styles.card, background: 'linear-gradient(180deg, #1e293b, #0f172a)', color: 'white' }}>
-                        <h2 style={{ ...styles.sectionTitle, color: 'white' }}>Upcoming Events</h2>
-                        <div style={styles.eventList}>
+                    {/* Upcoming Events Section */}
+                    <section className="rounded-[32px] bg-slate-900 p-8 text-white shadow-2xl shadow-slate-900/20">
+                        <h2 className="mb-6 text-xl font-black tracking-tight text-white">Upcoming Events</h2>
+                        <div className="space-y-4">
                             {[
                                 { title: 'HIIT Cardio', time: 'Today, 10:00 AM', active: true },
                                 { title: 'Yoga Flow', time: 'Tomorrow, 06:00 PM', active: false }
                             ].map((ev, i) => (
-                                <div key={i} style={{ ...styles.eventItem, background: ev.active ? 'rgba(255,255,255,0.1)' : 'transparent' }}>
-                                    <div style={styles.eventDate}>
-                                        <span style={{ fontWeight: 800 }}>{ev.time.split(',')[0]}</span>
+                                <div key={i} className={`flex items-center gap-4 rounded-2xl p-4 transition-colors ${ev.active ? 'bg-white/10 ring-1 ring-white/20' : 'hover:bg-white/5'}`}>
+                                    <div className="flex flex-col items-center justify-center rounded-xl bg-white/10 p-2 min-w-[60px]">
+                                        <span className="text-xs font-black uppercase tracking-tighter">{ev.time.split(',')[0]}</span>
                                     </div>
-                                    <div style={{ flex: 1 }}>
-                                        <h4 style={{ margin: 0, fontSize: '0.95rem' }}>{ev.title}</h4>
-                                        <span style={{ fontSize: '0.8rem', opacity: 0.6 }}>{ev.time.split(',')[1]}</span>
+                                    <div className="flex-1">
+                                        <h4 className="text-sm font-bold leading-tight">{ev.title}</h4>
+                                        <span className="text-xs font-medium text-slate-400">{ev.time.split(',')[1]}</span>
                                     </div>
-                                    {ev.active && <span style={styles.liveBadge}>LIVE</span>}
+                                    {ev.active && (
+                                        <span className="animate-pulse rounded-md bg-red-500 px-2 py-1 text-[10px] font-black uppercase tracking-wider text-white">LIVE</span>
+                                    )}
                                 </div>
                             ))}
+                        </div>
+
+                        <div className="mt-8 rounded-2xl bg-gradient-to-br from-indigo-600 to-purple-600 p-6">
+                            <p className="text-xs font-bold uppercase tracking-widest text-indigo-200">Coach Tip</p>
+                            <p className="mt-2 text-sm font-medium leading-relaxed text-indigo-50">
+                                "Consistency is the key to progress. Even a 15-minute workout counts!"
+                            </p>
                         </div>
                     </section>
                 </div>
@@ -114,56 +143,7 @@ export default function DashboardPage() {
 }
 
 // --- Icons ---
-const BookIcon = () => <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>;
-const ChartIcon = () => <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>;
-const CheckIcon = () => <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>;
-const CalendarIcon = () => <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>;
-
-// --- Styles ---
-const styles = {
-    pageContainer: {
-        minHeight: '100vh',
-        backgroundColor: '#f8fafc',
-        fontFamily: '"Inter", sans-serif',
-        position: 'relative',
-        overflow: 'hidden'
-    },
-    bgGlow: {
-        position: 'absolute',
-        top: '-10%', left: '-10%',
-        width: '40%', height: '40%',
-        background: 'radial-gradient(circle, rgba(37, 99, 235, 0.05) 0%, transparent 70%)',
-        zIndex: 0
-    },
-    contentWrapper: {
-        maxWidth: '1200px', margin: '0 auto', padding: '3rem 1.5rem', position: 'relative', zIndex: 1
-    },
-    header: { display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '3rem' },
-    greeting: { fontSize: '2.25rem', fontWeight: 800, color: '#0f172a', letterSpacing: '-0.025em', margin: 0 },
-    gradientText: { background: 'linear-gradient(90deg, #2563eb, #9333ea)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' },
-    subtitle: { color: '#64748b', marginTop: '0.5rem' },
-    primaryBtn: {
-        padding: '0.8rem 1.5rem', background: '#0f172a', color: 'white', border: 'none', borderRadius: '12px', fontWeight: 600, cursor: 'pointer', boxShadow: '0 10px 15px -3px rgba(0,0,0,0.1)'
-    },
-    statsGrid: { display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1.5rem', marginBottom: '3rem' },
-    card: { padding: '1.5rem', borderRadius: '24px', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.02), 0 20px 25px -5px rgba(0,0,0,0.05)' },
-    statLabel: { fontSize: '0.875rem', fontWeight: 600, color: '#64748b', margin: '0 0 4px 0' },
-    statValue: { fontSize: '2rem', fontWeight: 800, color: '#0f172a', margin: 0 },
-    mainGrid: { display: 'grid', gridTemplateColumns: '1.6fr 1fr', gap: '2rem' },
-    cardHeader: { display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' },
-    sectionTitle: { fontSize: '1.25rem', fontWeight: 800, color: '#0f172a', margin: 0 },
-    textBtn: { background: 'none', border: 'none', color: '#2563eb', fontWeight: 700, cursor: 'pointer' },
-    courseList: { display: 'flex', flexDirection: 'column', gap: '1rem' },
-    courseItem: {
-        display: 'flex', alignItems: 'center', gap: '1rem', padding: '12px', borderRadius: '16px', border: '1px solid #f1f5f9', transition: 'transform 0.2s'
-    },
-    thumbnail: { width: '56px', height: '56px', borderRadius: '12px', objectFit: 'cover' },
-    courseName: { fontSize: '0.95rem', fontWeight: 700, margin: '0 0 8px 0' },
-    progressContainer: { width: '100%', height: '6px', background: '#f1f5f9', borderRadius: '10px', overflow: 'hidden' },
-    progressBar: { height: '100%', borderRadius: '10px' },
-    playBtn: { width: '32px', height: '32px', borderRadius: '50%', border: 'none', background: '#f1f5f9', color: '#2563eb', cursor: 'pointer' },
-    eventList: { display: 'flex', flexDirection: 'column', gap: '0.5rem', marginTop: '1rem' },
-    eventItem: { display: 'flex', alignItems: 'center', gap: '1rem', padding: '1rem', borderRadius: '16px' },
-    eventDate: { padding: '8px', background: 'rgba(255,255,255,0.1)', borderRadius: '10px', minWidth: '50px', textAlign: 'center' },
-    liveBadge: { padding: '4px 8px', background: '#ef4444', borderRadius: '6px', fontSize: '0.65rem', fontWeight: 900 }
-};
+const BookIcon = () => <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>;
+const ChartIcon = () => <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>;
+const CheckIcon = () => <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>;
+const CalendarIcon = () => <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>;

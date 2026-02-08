@@ -13,7 +13,7 @@ import NutritionPage from './pages/NutritionPage.jsx';
 import ProfilePage from './pages/ProfilePage.jsx';
 import TrainerDashboardpage from './pages/TrainerDashboardpage.jsx';
 import TrainerProfilePage from './pages/TrainerProfilePage.jsx';
-import CoursesPage from './pages/CoursesPage.jsx';  
+import CoursesPage from './pages/CoursesPage.jsx';
 import RegisterPage from './pages/RegisterPage.jsx';
 import AddProgramPage from './pages/AddProgramPage.jsx';
 
@@ -41,7 +41,7 @@ function App() {
                 <Route path="nutrition" element={<NutritionPage />} />
             </Route>
             <Route path="/trainer" >
-                  <Route index element={<Home />} />
+                <Route index element={<Home />} />
                 <Route path="profile" element={<TrainerProfilePage />} />
                 <Route path="dashboard" element={<TrainerDashboardpage />} />
                 <Route path="add-program" element={<AddProgramPage />} />
