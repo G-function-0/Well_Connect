@@ -1,108 +1,115 @@
 import React from 'react';
 
-// Reusable Button Component for Next-Level Branding
-const ActionButton = ({ children, primary }) => (
-    <button style={{
-        ...styles.baseBtn,
-        ...(primary ? styles.primaryBtn : styles.secondaryBtn)
-    }}>
-        {children}
-    </button>
-);
-
 export default function LiveClassPage() {
     return (
-        <div style={styles.pageWrapper}>
-            <div style={styles.glowBg} />
+        <div className="relative min-h-screen overflow-x-hidden bg-slate-950 font-sans text-slate-100">
+            {/* Ambient Glow Background */}
+            <div className="absolute -right-[5%] -top-[10%] z-0 h-[50%] w-[50%] rounded-full bg-blue-600/10 blur-[120px]" />
 
-            <main style={styles.container}>
+            <main className="relative z-10 mx-auto max-w-7xl px-6 py-8 md:py-12">
+
                 {/* Header: Dynamic & Informative */}
-                <header style={styles.header}>
-                    <div style={styles.headerInfo}>
-                        <div style={styles.badgeRow}>
-                            <div style={styles.liveIndicator}>
-                                <span style={styles.pulseDot} />
+                <header className="mb-10 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
+                    <div className="space-y-3">
+                        <div className="flex items-center gap-4">
+                            <div className="flex items-center gap-2 rounded-full bg-red-500 px-3 py-1 text-[10px] font-black tracking-widest text-white shadow-lg shadow-red-500/20">
+                                <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-white shadow-[0_0_8px_white]" />
                                 LIVE NOW
                             </div>
-                            <div style={styles.participantCount}>
-                                <svg width="14" height="14" fill="currentColor" viewBox="0 0 20 20"><path d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" /></svg>
+                            <div className="flex items-center gap-1.5 text-sm font-medium text-slate-400">
+                                <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 20 20"><path d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" /></svg>
                                 128 Watching
                             </div>
                         </div>
-                        <h1 style={styles.mainTitle}>HIIT Cardio <span style={styles.mutedTitle}>Mastery</span></h1>
+                        <h1 className="text-4xl font-black tracking-tight md:text-5xl">
+                            HIIT Cardio <span className="font-light opacity-30">Mastery</span>
+                        </h1>
                     </div>
 
-                    <div style={styles.timerCard}>
-                        <div style={{ textAlign: 'right' }}>
-                            <span style={styles.timerLabel}>ENDING IN</span>
-                            <div style={styles.timerValue}>42:15</div>
+                    <div className="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-md">
+                        <div className="text-right">
+                            <span className="text-[10px] font-bold uppercase tracking-widest text-slate-500">Ending In</span>
+                            <div className="font-mono text-xl font-black text-white">42:15</div>
                         </div>
-                        <div style={styles.timerIcon}><ClockIcon /></div>
+                        <div className="text-emerald-400">
+                            <ClockIcon />
+                        </div>
                     </div>
                 </header>
 
-                <div style={styles.layoutGrid}>
+                <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
+
                     {/* Main Stage: Cinema Mode */}
-                    <div style={styles.videoSection}>
-                        <div style={styles.videoContainer}>
-                            <div style={styles.videoOverlay}>
-                                <div style={styles.overlayPlayCircle}>
-                                    <div style={styles.playArrow} />
+                    <div className="lg:col-span-8 space-y-6">
+                        <div className="group relative aspect-video w-full overflow-hidden rounded-[2.5rem] bg-black shadow-2xl shadow-black/50">
+                            <div className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-slate-950/60 backdrop-blur-[2px] transition-all group-hover:backdrop-blur-none">
+                                <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-white/20 ring-1 ring-white/30 transition-transform group-hover:scale-110">
+                                    <div className="ml-1.5 h-0 w-0 border-y-[12px] border-l-[20px] border-y-transparent border-l-white" />
                                 </div>
-                                <h3 style={styles.overlayText}>Enter Workout Room</h3>
-                                <p style={styles.overlaySubtext}>Sarah Johnson is live and waiting for you.</p>
-                                <button style={styles.joinBtn}>Join Stream</button>
+                                <h3 className="mb-2 text-2xl font-black">Enter Workout Room</h3>
+                                <p className="mb-6 text-slate-400">Sarah Johnson is live and waiting for you.</p>
+                                <button className="rounded-xl bg-blue-600 px-8 py-3 font-bold text-white shadow-lg shadow-blue-600/30 transition-all hover:bg-blue-500 active:scale-95">
+                                    Join Stream
+                                </button>
                             </div>
                             <img
                                 src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&q=80&w=1200"
-                                style={styles.videoPlaceholder}
+                                className="h-full w-full object-cover opacity-40 transition-transform duration-700 group-hover:scale-105"
                                 alt="Live Workout"
                             />
                         </div>
 
-                        <div style={styles.detailsCard}>
-                            <div style={styles.tabs}>
-                                <span style={styles.activeTab}>Overview</span>
-                                <span style={styles.inactiveTab}>Equipment</span>
-                                <span style={styles.inactiveTab}>Resources</span>
+                        {/* Details Section */}
+                        <div className="rounded-[2.5rem] border border-white/5 bg-white/[0.03] p-8 backdrop-blur-sm">
+                            <div className="mb-6 flex gap-8 border-b border-white/10 pb-4">
+                                <span className="relative font-bold text-blue-500 after:absolute after:-bottom-4 after:left-0 after:h-0.5 after:w-full after:bg-blue-500">Overview</span>
+                                <span className="cursor-pointer font-medium text-slate-500 hover:text-slate-300">Equipment</span>
+                                <span className="cursor-pointer font-medium text-slate-500 hover:text-slate-300">Resources</span>
                             </div>
-                            <p style={styles.description}>
+                            <p className="leading-relaxed text-slate-300">
                                 This high-intensity session targets major muscle groups through 45-second intervals.
-                                Focus on <strong>explosive movement</strong> and consistent breathing.
+                                Focus on <strong className="text-white">explosive movement</strong> and consistent breathing.
                                 No equipment needed, just space and hydration!
                             </p>
                         </div>
                     </div>
 
                     {/* Sidebar: Personal & Contextual */}
-                    <aside style={styles.sidebar}>
+                    <aside className="lg:col-span-4 space-y-6">
+
                         {/* Instructor Card */}
-                        <div style={styles.instructorCard}>
-                            <img src="https://i.pravatar.cc/100?img=3" style={styles.avatar} alt="Sarah" />
-                            <div style={{ flex: 1 }}>
-                                <h4 style={styles.instructorName}>Sarah Johnson</h4>
-                                <div style={styles.instructorSpecialty}>Elite Performance Coach</div>
+                        <div className="flex items-center gap-4 rounded-3xl bg-white p-5 text-slate-900 shadow-xl">
+                            <img src="https://i.pravatar.cc/100?img=3" className="h-14 w-14 rounded-2xl object-cover" alt="Sarah" />
+                            <div className="flex-1">
+                                <h4 className="font-black">Sarah Johnson</h4>
+                                <div className="text-xs font-bold text-emerald-600">Elite Performance Coach</div>
                             </div>
-                            <button style={styles.followBtn}>Follow</button>
+                            <button className="rounded-xl bg-slate-100 px-4 py-2 text-xs font-black hover:bg-slate-200">
+                                Follow
+                            </button>
                         </div>
 
                         {/* Preparation Checklist */}
-                        <div style={styles.checklistCard}>
-                            <h4 style={styles.cardTitle}>Quick Checklist</h4>
-                            <ul style={styles.checklist}>
-                                <li style={styles.checkItem}><CheckIcon /> Hydration (500ml Water)</li>
-                                <li style={styles.checkItem}><CheckIcon /> Sufficient Floor Space</li>
-                                <li style={styles.checkItem}><CheckIcon /> Heart Rate Monitor Sync</li>
+                        <div className="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm">
+                            <h4 className="mb-4 text-xs font-black uppercase tracking-widest text-slate-500">Quick Checklist</h4>
+                            <ul className="space-y-4">
+                                <CheckListItem text="Hydration (500ml Water)" />
+                                <CheckListItem text="Sufficient Floor Space" />
+                                <CheckListItem text="Heart Rate Monitor Sync" />
                             </ul>
                         </div>
 
                         {/* Sticky Next Class Info */}
-                        <div style={styles.promoCard}>
-                            <div style={styles.promoContent}>
-                                <span style={styles.promoLabel}>PART OF PROGRAM</span>
-                                <h4 style={styles.promoTitle}>The 30-Day Shred Masterclass</h4>
-                                <button style={styles.promoBtn}>View Full Curriculum</button>
+                        <div className="group relative overflow-hidden rounded-3xl bg-gradient-to-br from-blue-600 to-purple-700 p-6 text-white shadow-2xl shadow-blue-900/20">
+                            <div className="relative z-10">
+                                <span className="text-[10px] font-black tracking-widest opacity-70">PART OF PROGRAM</span>
+                                <h4 className="mt-2 mb-4 text-lg font-black leading-tight">The 30-Day Shred Masterclass</h4>
+                                <button className="w-full rounded-xl bg-white/20 py-3 text-xs font-extrabold backdrop-blur-md transition-colors hover:bg-white/30">
+                                    View Full Curriculum
+                                </button>
                             </div>
+                            {/* Decorative design element */}
+                            <div className="absolute -bottom-4 -right-4 h-24 w-24 rounded-full bg-white/10 blur-2xl group-hover:bg-white/20" />
                         </div>
                     </aside>
                 </div>
@@ -111,54 +118,17 @@ export default function LiveClassPage() {
     );
 }
 
-// --- Icons ---
-const ClockIcon = () => <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>;
-const CheckIcon = () => <svg width="16" height="16" style={{ color: '#10b981' }} fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>;
+const CheckListItem = ({ text }) => (
+    <li className="flex items-center gap-3 text-sm font-medium text-slate-200">
+        <div className="flex h-5 w-5 items-center justify-center rounded-full bg-emerald-500/20 text-emerald-400">
+            <svg className="h-3 w-3" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
+        </div>
+        {text}
+    </li>
+);
 
-// --- Styles ---
-const styles = {
-    pageWrapper: { minHeight: '100vh', backgroundColor: '#0f172a', color: '#f8fafc', fontFamily: 'Inter, system-ui, sans-serif', position: 'relative', overflowX: 'hidden' },
-    glowBg: { position: 'absolute', top: '-10%', right: '-5%', width: '50%', height: '50%', background: 'radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, transparent 70%)', zIndex: 0 },
-    container: { position: 'relative', zIndex: 1, maxWidth: '1280px', margin: '0 auto', padding: '2rem 1.5rem' },
-    header: { display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '2.5rem' },
-    headerInfo: { display: 'flex', flexDirection: 'column', gap: '0.5rem' },
-    badgeRow: { display: 'flex', gap: '1rem', alignItems: 'center' },
-    liveIndicator: { display: 'flex', alignItems: 'center', gap: '0.5rem', background: '#ef4444', color: 'white', padding: '4px 12px', borderRadius: '20px', fontSize: '0.7rem', fontWeight: 800, letterSpacing: '0.05em' },
-    pulseDot: { width: '6px', height: '6px', backgroundColor: 'white', borderRadius: '50%', boxShadow: '0 0 8px white' },
-    participantCount: { color: '#94a3b8', fontSize: '0.8rem', display: 'flex', alignItems: 'center', gap: '4px' },
-    mainTitle: { fontSize: '2.5rem', fontWeight: 900, margin: 0, letterSpacing: '-0.03em' },
-    mutedTitle: { opacity: 0.3, fontWeight: 300 },
-    timerCard: { display: 'flex', alignItems: 'center', gap: '1rem', background: 'rgba(255,255,255,0.05)', padding: '0.75rem 1.25rem', borderRadius: '1.25rem', border: '1px solid rgba(255,255,255,0.1)' },
-    timerLabel: { fontSize: '0.65rem', fontWeight: 700, color: '#64748b' },
-    timerValue: { fontSize: '1.25rem', fontWeight: 800, fontFamily: 'monospace' },
-    timerIcon: { color: '#34d399' },
-    layoutGrid: { display: 'grid', gridTemplateColumns: '1fr 340px', gap: '2rem' },
-    videoSection: { display: 'flex', flexDirection: 'column', gap: '1.5rem' },
-    videoContainer: { position: 'relative', width: '100%', paddingBottom: '56.25%', background: '#000', borderRadius: '2rem', overflow: 'hidden', boxShadow: '0 25px 50px -12px rgba(0,0,0,0.5)' },
-    videoPlaceholder: { position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: 0.4 },
-    videoOverlay: { position: 'absolute', inset: 0, zIndex: 10, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', background: 'rgba(15, 23, 42, 0.6)', backdropFilter: 'blur(4px)' },
-    overlayPlayCircle: { width: '80px', height: '80px', borderRadius: '50%', background: 'rgba(255,255,255,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.5rem' },
-    playArrow: { width: 0, height: 0, borderTop: '12px solid transparent', borderBottom: '12px solid transparent', borderLeft: '20px solid white', marginLeft: '6px' },
-    overlayText: { fontSize: '1.5rem', fontWeight: 800, margin: '0 0 0.5rem 0' },
-    overlaySubtext: { color: '#94a3b8', marginBottom: '1.5rem' },
-    joinBtn: { background: '#2563eb', color: 'white', border: 'none', padding: '12px 32px', borderRadius: '12px', fontWeight: 700, cursor: 'pointer', transition: 'transform 0.2s' },
-    detailsCard: { background: 'rgba(255,255,255,0.03)', padding: '2rem', borderRadius: '2rem', border: '1px solid rgba(255,255,255,0.05)' },
-    tabs: { display: 'flex', gap: '2rem', borderBottom: '1px solid rgba(255,255,255,0.1)', marginBottom: '1.5rem', paddingBottom: '0.75rem' },
-    activeTab: { fontWeight: 700, color: '#3b82f6', position: 'relative' },
-    inactiveTab: { color: '#64748b', cursor: 'pointer' },
-    description: { lineHeight: '1.7', color: '#cbd5e1' },
-    sidebar: { display: 'flex', flexDirection: 'column', gap: '1.5rem' },
-    instructorCard: { display: 'flex', alignItems: 'center', gap: '1rem', background: 'white', padding: '1.25rem', borderRadius: '1.5rem', color: '#0f172a' },
-    avatar: { width: '50px', height: '50px', borderRadius: '12px', objectFit: 'cover' },
-    instructorName: { margin: 0, fontSize: '1rem', fontWeight: 800 },
-    instructorSpecialty: { fontSize: '0.75rem', color: '#10b981', fontWeight: 600 },
-    followBtn: { background: '#f1f5f9', border: 'none', padding: '6px 12px', borderRadius: '8px', fontSize: '0.75rem', fontWeight: 700, cursor: 'pointer' },
-    checklistCard: { background: 'rgba(255,255,255,0.05)', padding: '1.5rem', borderRadius: '1.5rem', border: '1px solid rgba(255,255,255,0.1)' },
-    cardTitle: { margin: '0 0 1rem 0', fontSize: '0.9rem', color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.05em' },
-    checklist: { listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.75rem' },
-    checkItem: { display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.85rem' },
-    promoCard: { background: 'linear-gradient(135deg, #2563eb, #7c3aed)', borderRadius: '1.5rem', padding: '1.5rem', position: 'relative', overflow: 'hidden' },
-    promoLabel: { fontSize: '0.6rem', fontWeight: 800, opacity: 0.8 },
-    promoTitle: { margin: '0.5rem 0 1rem 0', fontSize: '1rem', fontWeight: 800, lineHeight: '1.4' },
-    promoBtn: { width: '100%', background: 'rgba(255,255,255,0.2)', border: 'none', padding: '10px', borderRadius: '10px', color: 'white', fontWeight: 700, fontSize: '0.75rem', cursor: 'pointer' }
-};
+const ClockIcon = () => (
+    <svg className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+    </svg>
+);

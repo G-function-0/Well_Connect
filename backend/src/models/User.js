@@ -13,7 +13,6 @@ const userSchema = new mongoose.Schema(
         name : {
             type : String,
             required : true,
-
         },
         password : {
             type : String,
@@ -26,10 +25,17 @@ const userSchema = new mongoose.Schema(
             required : true,
             default : "client"
         },
-        
+        dob : {
+            type :Date,
+            required : true,
+        },
+        age : {
+            type : Number,
+            required :  true,
+        }
     },
     {
-         timestamps: true,
+        timestamps: true,
     }
 )
 

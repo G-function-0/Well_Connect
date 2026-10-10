@@ -1,73 +1,31 @@
 import React from 'react';
 
 export default function NutritionPage() {
-    // Dummy data for the Bar Graph
     const weeklyData = [
-        { day: 'Mon', val: 80, color: '#10b981' },
-        { day: 'Tue', val: 65, color: '#10b981' },
-        { day: 'Wed', val: 95, color: '#10b981' },
-        { day: 'Thu', val: 40, color: '#3b82f6' }, // Highlight different status
-        { day: 'Fri', val: 75, color: '#10b981' },
-        { day: 'Sat', val: 85, color: '#10b981' },
-        { day: 'Sun', val: 55, color: '#10b981' },
+        { day: 'Mon', val: 80, color: 'bg-emerald-500' },
+        { day: 'Tue', val: 65, color: 'bg-emerald-500' },
+        { day: 'Wed', val: 95, color: 'bg-emerald-500' },
+        { day: 'Thu', val: 40, color: 'bg-blue-500' },
+        { day: 'Fri', val: 75, color: 'bg-emerald-500' },
+        { day: 'Sat', val: 85, color: 'bg-emerald-500' },
+        { day: 'Sun', val: 55, color: 'bg-emerald-500' },
     ];
 
     return (
-        <div style={{
-            minHeight: '100vh',
-            display: 'flex',
-            flexDirection: 'column',
-            backgroundColor: '#f1f5f9',
-            fontFamily: 'Inter, system-ui, sans-serif'
-        }}>
-            <main style={{
-                flex: 1,
-                maxWidth: '85rem',
-                margin: '0 auto',
-                width: '100%',
-                padding: '3rem 1.5rem'
-            }}>
+        <div className="min-h-screen bg-slate-50 font-sans text-slate-900">
+            <main className="mx-auto max-w-[85rem] px-6 py-12">
 
                 {/* HEADER SECTION */}
-                <div style={{
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'flex-end',
-                    marginBottom: '3rem',
-                }}>
+                <div className="mb-12 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
                     <div>
-                        <h1 style={{
-                            fontSize: '3rem',
-                            fontWeight: 900,
-                            color: '#0f172a',
-                            letterSpacing: '-0.05em',
-                            lineHeight: 1,
-                            margin: 0
-                        }}>
-                            Fit <span style={{ color: '#10b981' }}>Guide</span>
+                        <h1 className="text-5xl font-black tracking-tighter text-slate-900">
+                            Fit <span className="text-emerald-500">Guide</span>
                         </h1>
-                        <p style={{
-                            color: '#64748b',
-                            fontWeight: 500,
-                            fontSize: '1.1rem',
-                            marginTop: '0.5rem'
-                        }}>
+                        <p className="mt-2 text-lg font-medium text-slate-500">
                             Precision nutrition for peak performance.
                         </p>
                     </div>
-                    <button style={{
-                        padding: '1rem 2rem',
-                        backgroundColor: '#0f172a',
-                        color: 'white',
-                        borderRadius: '1rem',
-                        border: 'none',
-                        fontWeight: 700,
-                        cursor: 'pointer',
-                        boxShadow: '0 10px 15px -3px rgba(15, 23, 42, 0.3)',
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '0.75rem'
-                    }}>
+                    <button className="flex items-center gap-3 rounded-2xl bg-slate-900 px-8 py-4 font-bold text-white shadow-xl shadow-slate-900/20 transition-transform hover:scale-105 active:scale-95">
                         <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                         </svg>
@@ -75,155 +33,133 @@ export default function NutritionPage() {
                     </button>
                 </div>
 
-                <div style={{
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(12, 1fr)',
-                    gap: '2rem'
-                }}>
+                <div className="grid grid-cols-12 gap-8">
+                    {/* LEFT COLUMN: STATS */}
+                    <div className="col-span-12 flex flex-col gap-8 lg:col-span-8">
 
-                    {/* LEFT COLUMN: STATS (8 Units) */}
-                    <div style={{ gridColumn: 'span 8', display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-
-                        {/* BIG STATS ROW */}
-                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1.5rem' }}>
+                        {/* MACRO STATS ROW */}
+                        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
                             {[
-                                { label: 'Calories', val: '1,450', unit: 'kcal', color: '#0f172a', pct: 72 },
-                                { label: 'Protein', val: '85', unit: 'g', color: '#10b981', pct: 57 },
-                                { label: 'Carbs', val: '120', unit: 'g', color: '#3b82f6', pct: 60 },
-                                { label: 'Fats', val: '38', unit: 'g', color: '#f59e0b', pct: 76 },
+                                { label: 'Calories', val: '1,450', unit: 'kcal', color: 'bg-slate-900', pct: 72 },
+                                { label: 'Protein', val: '85', unit: 'g', color: 'bg-emerald-500', pct: 57 },
+                                { label: 'Carbs', val: '120', unit: 'g', color: 'bg-blue-500', pct: 60 },
+                                { label: 'Fats', val: '38', unit: 'g', color: 'bg-amber-500', pct: 76 },
                             ].map((stat, i) => (
-                                <div key={i} style={{
-                                    backgroundColor: 'white',
-                                    padding: '1.5rem',
-                                    borderRadius: '1.5rem',
-                                    boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03)',
-                                    border: '1px solid rgba(255,255,255,0.7)'
-                                }}>
-                                    <span style={{ fontSize: '0.75rem', fontWeight: 800, color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.05em' }}>{stat.label}</span>
-                                    <div style={{ fontSize: '1.75rem', fontWeight: 900, color: '#1e293b', margin: '0.5rem 0' }}>
-                                        {stat.val}<span style={{ fontSize: '0.875rem', color: '#cbd5e1', marginLeft: '0.25rem' }}>{stat.unit}</span>
+                                <div key={i} className="rounded-[1.5rem] border border-white bg-white p-6 shadow-sm">
+                                    <span className="text-[10px] font-black tracking-widest text-slate-400 uppercase">{stat.label}</span>
+                                    <div className="my-2 text-2xl font-black text-slate-800">
+                                        {stat.val}<span className="ml-1 text-sm font-bold text-slate-300 uppercase">{stat.unit}</span>
                                     </div>
-                                    <div style={{ height: '6px', width: '100%', backgroundColor: '#f1f5f9', borderRadius: '10px', overflow: 'hidden' }}>
-                                        <div style={{ height: '100%', width: `${stat.pct}%`, backgroundColor: stat.color, borderRadius: '10px' }} />
+                                    <div className="h-1.5 w-full overflow-hidden rounded-full bg-slate-100">
+                                        <div className={`h-full rounded-full ${stat.color}`} style={{ width: `${stat.pct}%` }} />
                                     </div>
                                 </div>
                             ))}
                         </div>
 
                         {/* CHARTS ROW */}
-                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem' }}>
-                            {/* CUSTOM BAR CHART CARD */}
-                            <div style={{ backgroundColor: 'white', padding: '2rem', borderRadius: '2rem', boxShadow: '0 10px 25px rgba(0,0,0,0.02)' }}>
-                                <h3 style={{ margin: '0 0 2rem 0', fontWeight: 800, fontSize: '1.1rem', color: '#1e293b' }}>Weekly Calorie Consistency</h3>
-                                <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', height: '180px', paddingBottom: '20px' }}>
+                        <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+                            {/* WEEKLY BAR CHART */}
+                            <div className="rounded-[2rem] bg-white p-8 shadow-sm">
+                                <h3 className="mb-8 text-sm font-black text-slate-800 uppercase tracking-tight">Weekly Consistency</h3>
+                                <div className="flex h-40 items-end justify-between gap-2">
                                     {weeklyData.map((d, i) => (
-                                        <div key={i} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flex: 1, gap: '10px' }}>
-                                            <div style={{
-                                                width: '30px',
-                                                height: `${d.val}%`,
-                                                backgroundColor: d.color,
-                                                borderRadius: '6px 6px 2px 2px',
-                                                transition: 'height 0.5s ease'
-                                            }} />
-                                            <span style={{ fontSize: '0.7rem', fontWeight: 700, color: '#94a3b8' }}>{d.day}</span>
+                                        <div key={i} className="group flex flex-1 flex-col items-center gap-3">
+                                            <div
+                                                className={`w-full rounded-t-lg transition-all duration-500 group-hover:opacity-80 ${d.color}`}
+                                                style={{ height: `${d.val}%` }}
+                                            />
+                                            <span className="text-[10px] font-bold text-slate-400">{d.day}</span>
                                         </div>
                                     ))}
                                 </div>
                             </div>
 
                             {/* PROGRESS CIRCLE CARD */}
-                            <div style={{ backgroundColor: '#0f172a', padding: '2rem', borderRadius: '2rem', color: 'white' }}>
-                                <h3 style={{ margin: '0 0 1rem 0', fontWeight: 800, fontSize: '1.1rem' }}>Daily Progress</h3>
-                                <div style={{ display: 'flex', alignItems: 'center', gap: '2rem', height: '150px' }}>
-                                    <div style={{ position: 'relative', width: '120px', height: '120px', borderRadius: '50%', border: '12px solid #1e293b', display: 'grid', placeItems: 'center' }}>
-                                        <div style={{ position: 'absolute', width: '100px', height: '100px', borderRadius: '50%', border: '8px solid #10b981', borderTopColor: 'transparent', transform: 'rotate(45deg)' }} />
-                                        <span style={{ fontWeight: 900, fontSize: '1.5rem' }}>72%</span>
+                            <div className="rounded-[2rem] bg-slate-900 p-8 text-white shadow-2xl shadow-slate-900/20">
+                                <h3 className="mb-6 text-sm font-black uppercase tracking-tight opacity-60">Daily Progress</h3>
+                                <div className="flex items-center gap-8">
+                                    <div className="relative flex h-32 w-32 items-center justify-center rounded-full border-[10px] border-slate-800">
+                                        {/* Simplified SVG Ring */}
+                                        <svg className="absolute h-full w-full -rotate-90">
+                                            <circle cx="64" cy="64" r="54" fill="transparent" stroke="#10b981" strokeWidth="10" strokeDasharray="339" strokeDashoffset="95" strokeLinecap="round" />
+                                        </svg>
+                                        <span className="text-2xl font-black">72%</span>
                                     </div>
                                     <div>
-                                        <p style={{ margin: 0, fontSize: '0.875rem', color: '#94a3b8' }}>Remaining</p>
-                                        <p style={{ margin: '0.25rem 0', fontSize: '1.5rem', fontWeight: 800 }}>550 kcal</p>
-                                        <span style={{ fontSize: '0.75rem', color: '#10b981', fontWeight: 600 }}>↑ 12% from yesterday</span>
+                                        <p className="text-xs font-bold text-slate-500">Remaining</p>
+                                        <p className="text-3xl font-black">550 <span className="text-sm">kcal</span></p>
+                                        <span className="text-xs font-bold text-emerald-400">↑ 12% from yesterday</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
                         {/* MEAL LIST */}
-                        <div style={{ backgroundColor: 'white', borderRadius: '2rem', overflow: 'hidden' }}>
-                            <div style={{ padding: '1.5rem 2rem', borderBottom: '1px solid #f1f5f9', display: 'flex', justifyContent: 'space-between' }}>
-                                <h3 style={{ fontWeight: 800 }}>Recent Consumptions</h3>
-                                <span style={{ color: '#3b82f6', fontWeight: 700, fontSize: '0.875rem', cursor: 'pointer' }}>View All</span>
+                        <div className="overflow-hidden rounded-[2rem] bg-white shadow-sm">
+                            <div className="flex items-center justify-between border-b border-slate-50 px-8 py-6">
+                                <h3 className="font-black text-slate-800">Recent Consumptions</h3>
+                                <button className="text-sm font-bold text-blue-600 hover:underline">View All</button>
                             </div>
-                            {[
-                                { name: 'Chicken Breast with Rice', type: 'LUNCH', cal: 450, time: '1:15 PM' },
-                                { name: 'Greek Yogurt with Honey', type: 'SNACK', cal: 180, time: '4:30 PM' },
-                            ].map((meal, i) => (
-                                <div key={i} style={{ padding: '1.5rem 2rem', display: 'flex', alignItems: 'center', borderBottom: '1px solid #f8fafc' }}>
-                                    <div style={{ width: '48px', height: '48px', backgroundColor: '#f1f5f9', borderRadius: '12px', marginRight: '1.5rem', display: 'grid', placeItems: 'center' }}>🍱</div>
-                                    <div style={{ flex: 1 }}>
-                                        <h4 style={{ margin: 0, fontWeight: 700 }}>{meal.name}</h4>
-                                        <span style={{ fontSize: '0.75rem', color: '#94a3b8', fontWeight: 600 }}>{meal.type} • {meal.time}</span>
+                            <div className="divide-y divide-slate-50">
+                                {[
+                                    { name: 'Chicken Breast with Rice', type: 'LUNCH', cal: 450, time: '1:15 PM', icon: '🍱' },
+                                    { name: 'Greek Yogurt with Honey', type: 'SNACK', cal: 180, time: '4:30 PM', icon: '🥣' },
+                                ].map((meal, i) => (
+                                    <div key={i} className="group flex items-center px-8 py-5 transition-colors hover:bg-slate-50/50">
+                                        <div className="mr-6 flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-100 text-xl transition-transform group-hover:scale-110">
+                                            {meal.icon}
+                                        </div>
+                                        <div className="flex-1">
+                                            <h4 className="font-bold text-slate-800">{meal.name}</h4>
+                                            <span className="text-[10px] font-black text-slate-400 uppercase">{meal.type} • {meal.time}</span>
+                                        </div>
+                                        <div className="text-right">
+                                            <div className="font-black text-slate-800">{meal.cal} kcal</div>
+                                            <div className="text-[10px] font-bold text-emerald-500 uppercase tracking-widest">Tracked</div>
+                                        </div>
                                     </div>
-                                    <div style={{ textAlign: 'right' }}>
-                                        <div style={{ fontWeight: 800 }}>{meal.cal} kcal</div>
-                                        <div style={{ fontSize: '0.75rem', color: '#10b981', fontWeight: 700 }}>Tracked</div>
-                                    </div>
-                                </div>
-                            ))}
+                                ))}
+                            </div>
                         </div>
                     </div>
 
-                    {/* RIGHT COLUMN: FORM (4 Units) */}
-                    <div style={{ gridColumn: 'span 4' }}>
-                        <div style={{
-                            backgroundColor: 'white',
-                            padding: '2.5rem',
-                            borderRadius: '2.5rem',
-                            boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.08)',
-                            position: 'sticky',
-                            top: '2rem',
-                            border: '1px solid #e2e8f0'
-                        }}>
-                            <h2 style={{ fontSize: '1.5rem', fontWeight: 900, marginBottom: '2rem' }}>Quick Add</h2>
+                    {/* RIGHT COLUMN: QUICK ADD FORM */}
+                    <div className="col-span-12 lg:col-span-4">
+                        <div className="sticky top-8 rounded-[2.5rem] border border-slate-200 bg-white p-10 shadow-2xl shadow-slate-200/50">
+                            <h2 className="mb-8 text-2xl font-black tracking-tight">Quick Add</h2>
 
-                            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+                            <div className="space-y-6">
                                 <div>
-                                    <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 800, color: '#64748b', textTransform: 'uppercase', marginBottom: '0.75rem' }}>Meal Name</label>
-                                    <input type="text" placeholder="Search foods..." style={{ width: '100%', padding: '1rem', borderRadius: '1rem', border: '2px solid #f1f5f9', backgroundColor: '#f8fafc', fontWeight: 600, outline: 'none' }} />
+                                    <label className="mb-2 block text-[10px] font-black uppercase tracking-widest text-slate-400">Meal Name</label>
+                                    <input type="text" placeholder="Search foods..." className="w-full rounded-2xl border-2 border-slate-50 bg-slate-50 p-4 font-semibold outline-none transition-all focus:border-emerald-500 focus:bg-white" />
                                 </div>
 
-                                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+                                <div className="grid grid-cols-2 gap-4">
                                     <div>
-                                        <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 800, color: '#64748b', textTransform: 'uppercase', marginBottom: '0.75rem' }}>Cals</label>
-                                        <input type="number" style={{ width: '100%', padding: '1rem', borderRadius: '1rem', border: '2px solid #f1f5f9', backgroundColor: '#f8fafc', fontWeight: 600 }} />
+                                        <label className="mb-2 block text-[10px] font-black uppercase tracking-widest text-slate-400">Cals</label>
+                                        <input type="number" className="w-full rounded-2xl border-2 border-slate-50 bg-slate-50 p-4 font-semibold outline-none focus:border-emerald-500 focus:bg-white" />
                                     </div>
                                     <div>
-                                        <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 800, color: '#64748b', textTransform: 'uppercase', marginBottom: '0.75rem' }}>Type</label>
-                                        <select style={{ width: '100%', padding: '1rem', borderRadius: '1rem', border: '2px solid #f1f5f9', backgroundColor: '#f8fafc', fontWeight: 600 }}>
+                                        <label className="mb-2 block text-[10px] font-black uppercase tracking-widest text-slate-400">Type</label>
+                                        <select className="w-full rounded-2xl border-2 border-slate-50 bg-slate-50 p-4 font-semibold outline-none focus:border-emerald-500 focus:bg-white">
                                             <option>LUNCH</option>
                                             <option>DINNER</option>
+                                            <option>SNACK</option>
                                         </select>
                                     </div>
                                 </div>
 
-                                <button style={{
-                                    marginTop: '1rem',
-                                    padding: '1.25rem',
-                                    backgroundColor: '#10b981',
-                                    color: 'white',
-                                    border: 'none',
-                                    borderRadius: '1.25rem',
-                                    fontWeight: 800,
-                                    fontSize: '1rem',
-                                    cursor: 'pointer',
-                                    boxShadow: '0 10px 20px rgba(16, 185, 129, 0.2)'
-                                }}>
+                                <button className="w-full rounded-[1.25rem] bg-emerald-500 py-4 text-lg font-black text-white shadow-lg shadow-emerald-500/30 transition-all hover:translate-y-[-2px] hover:bg-emerald-600 active:translate-y-0">
                                     Log Meal Now
                                 </button>
+
+                                <div className="rounded-2xl bg-blue-50 p-4 text-center">
+                                    <p className="text-xs font-bold text-blue-600">Pro Tip: Track protein first to hit goals faster!</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-
                 </div>
             </main>
         </div>
